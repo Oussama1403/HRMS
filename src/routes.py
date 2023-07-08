@@ -3,7 +3,7 @@
 from flask import flash,request,render_template,url_for,redirect,send_from_directory,abort,after_this_request,session
 from .app import app,db
 from .models import *
-from flask_login import login_user
+from flask_login import login_user,login_required,current_user
 
 #from .modules import *
 
@@ -12,9 +12,18 @@ def base():
     return redirect(url_for('home'))
 
 @app.route('/home',methods=['POST','GET'])
+@login_required
 def home():
     """Handle all incoming post/get requests"""
-    return render_template('home.html')
+    matricule = current_user.matricule
+    fullname = current_user.first_name + " " + current_user.last_name
+    email = current_user.email
+    phone = current_user.phone 
+    dep = current_user.dep_name
+    address = current_user.address
+    user = Matricules.query.filter_by(matricule=matricule).first()
+    is_admin = 'Administrateur' if user.is_admin == 1 else 'Employé'
+    return render_template('home.html',matricule=matricule,fullname=fullname,email=email,phone=phone,address=address,dep = dep,role=is_admin)
     
 
 @app.route("/demande_conge")
@@ -68,8 +77,9 @@ def register():
         last_name = request.form["inputLastName"]
         email = request.form["inputEmail"]
         password = request.form["inputPassword"]
+        address = request.form["address"]
         dep = request.form["dep"]
-        
+        phone = request.form["phone"]
         # check for valid matricule
         row = Matricules.query.filter_by(matricule=matricule).first()
         if not row:
@@ -83,7 +93,7 @@ def register():
             return render_template("register.html")
         
         # create a new user with the form data.
-        new_user = User(matricule=matricule,first_name=first_name,last_name=last_name,email=email,password=password,dep_name = dep)
+        new_user = User(matricule=matricule,first_name=first_name,last_name=last_name,email=email,password=password,phone=phone,address=address,dep_name = dep)
         db.session.add(new_user)
         db.session.commit()
         flash("Your account has been successfully created !")

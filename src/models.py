@@ -12,7 +12,10 @@ class User(UserMixin,db.Model):
     email = db.Column(db.String(100), unique=True)
     password = db.Column(db.String(100))
     dep_name = db.Column(db.Integer,db.ForeignKey('departements.name')) #cle etranger
+    address = db.Column(db.String(100))
+    phone = db.Column(db.Integer)
     salaire = db.Column(db.Integer)
+    
     # override get_id function from UserMixin to return our custom user id (matricule)
     def get_id(self):
         return self.matricule
