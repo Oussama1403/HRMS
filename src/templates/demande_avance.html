@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+ 
+  {% block title %}
+  demande d'avance sur salaire 
+  {% endblock title %}
+
+{% block content %}
+
+    <div id="layoutSidenav_content">
+
+        <div class="container">
+            <!-- Apply Leave Form -->
+            <div class="card pmd-card single-col-form">
+                <form id="apply-leave" method="post" action="" novalidate="novalidate">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group pmd-textfield pmd-textfield-floating-label">
+                                    <label class="control-label" for="datepickerstart">Motant demande</label>
+                                    <input type="number" class="form-control" id="datepickerstart" name="datepickerstart"><span class="pmd-textfield-focused"></span>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-group pmd-textfield pmd-textfield-floating-label">
+                                    <label>Motif</label>
+                                    <textarea class="form-control" id="reason" name="reason"></textarea><span class="pmd-textfield-focused"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <button type="submit" class="btn btn-primary pmd-ripple-effect pmd-btn-raised" name="applyleave" value="Apply Leave">Appliquer</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+       </div>
+    </div>
+    </div>
+
+{% endblock content %}
+

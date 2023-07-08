@@ -1,0 +1,6 @@
+sudo apt install python3.10
+sudo apt install python3.10-venv
+<dir>$ python3.10 -m venv myenv
+source myenv/bin/activate
+pip install module
+
