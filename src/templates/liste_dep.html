@@ -1,13 +1,14 @@
 {% extends "base.html" %}
  
   {% block title %}
-   employee list
+  liste des départements
   {% endblock title %}
 
 {% block content %}
 <div id="layoutSidenav_content">
     <main>
         <div class="container-fluid px-4">
+<h1 class="mt-4">liste des départements</h1><hr>
 <div class="card mb-4">
     <div class="card-header">
         <i class="fas fa-table me-1"></i>
@@ -17,16 +18,18 @@
         <table class="table table-striped">
             <thead>
               <tr>
-                <th scope="col">Nom</th>
+                <th scope="col">Nom Départements</th>
                 <th scope="col">nombre d'employés</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td></td>
-                <td></td>
-              </tr>
-            </tbody>
+              {% for dep in list_dep %}
+                  <tr>
+                      <td>{{ dep['name'] }}</td>
+                      <td>{{ dep['count'] }}</td>
+                  </tr>
+              {% endfor %}
+          </tbody>
           </table>
     </div>
 </div>

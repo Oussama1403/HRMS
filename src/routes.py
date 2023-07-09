@@ -4,8 +4,7 @@ from flask import flash,request,render_template,url_for,redirect,send_from_direc
 from .app import app,db
 from .models import *
 from flask_login import login_user,login_required,current_user
-
-#from .modules import *
+from .modules import *
 
 @app.route('/',methods=['GET'])
 def base():
@@ -27,78 +26,66 @@ def home():
     
 
 @app.route("/demande_conge")
+@login_required
 def demande_conge():
-    return render_template('demande_conge.html')
+    fullname,role = fullname_role()
+    return render_template('demande_conge.html',fullname = fullname,role=role)
+
 @app.route("/demande_avance")
+@login_required
 def demande_avance():
-    return render_template('demande_avance.html')
+    fullname,role = fullname_role()
+    return render_template('demande_avance.html',fullname = fullname,role=role)
 
 @app.route("/motdepass")
+@login_required
 def motdepass():
-    return render_template('password.html')
+    fullname,role = fullname_role()
+    return render_template('password.html',fullname = fullname,role=role)
 
 @app.route("/gere_conge")
+@login_required
 def gere_conge():
-    return render_template('gere_conge.html')
+    fullname,role = fullname_role()
+    return render_template('gere_conge.html',fullname = fullname,role=role)
 
 @app.route("/liste_employees")
+@login_required
 def liste_employees():
-    return render_template('liste_employees.html')
+    fullname,role = fullname_role()
+    users = User.query.all()
+    list_users = []
+    for user in users:
+        list_users.append({"matricule":user.matricule,"firstname":user.first_name,"lastname":user.last_name,"dep":user.dep_name,"salaire":user.salaire})
+    return render_template('liste_employees.html',list_users = list_users,fullname = fullname,role=role)
 
 @app.route("/liste_dep")
+@login_required
 def liste_dep():
-    return render_template('liste_dep.html')
+    fullname,role = fullname_role()
+    deps = Departements.query.all()
+    list_dep = []
+    for dep in deps:
+        dep_emp_count = len(User.query.filter_by(dep_name = dep.name).all()) 
+        list_dep.append({"name":dep.name,"count":dep_emp_count})
+    return render_template('liste_dep.html',list_dep = list_dep,fullname = fullname,role=role)
 
 # auth
 
 @app.route("/login",methods=['POST','GET'])
 def login():
     if request.method == 'POST':
-        matricule = request.form["matricule"]         
-        password = request.form["password"]
-        user = User.query.filter_by(matricule=matricule).first()
-        if not user or user.password != password:
-            flash('Veuillez vérifier vos informations et réessayer.')
-            return render_template('login.html')
-        
-        login_user(user,False)
-        return redirect(url_for('home'))
-
+        response = LoginAccount()
+        return response
     else:
         return render_template('login.html')    
 
 @app.route("/register",methods=['POST','GET'])
 def register():
     # TODO:FORM VALIDATION
-
     if request.method == 'POST':
-        matricule = request.form["matricule"]         
-        first_name = request.form["inputFirstName"]
-        last_name = request.form["inputLastName"]
-        email = request.form["inputEmail"]
-        password = request.form["inputPassword"]
-        address = request.form["address"]
-        dep = request.form["dep"]
-        phone = request.form["phone"]
-        # check for valid matricule
-        row = Matricules.query.filter_by(matricule=matricule).first()
-        if not row:
-            flash("matricule invalid")
-            return render_template("register.html")
-        
-        # check if already registred
-        row = User.query.filter_by(matricule=matricule).first()
-        if row:
-            flash("already registred")
-            return render_template("register.html")
-        
-        # create a new user with the form data.
-        new_user = User(matricule=matricule,first_name=first_name,last_name=last_name,email=email,password=password,phone=phone,address=address,dep_name = dep)
-        db.session.add(new_user)
-        db.session.commit()
-        flash("Your account has been successfully created !")
-        return render_template("register.html")
-    
+        response = RegisterAccount()
+        return response
     else:
         return render_template('register.html')     
 

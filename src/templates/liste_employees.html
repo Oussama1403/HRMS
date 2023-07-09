@@ -1,13 +1,14 @@
 {% extends "base.html" %}
  
   {% block title %}
-   employee list
+  liste des employés
   {% endblock title %}
 
 {% block content %}
 <div id="layoutSidenav_content">
     <main>
         <div class="container-fluid px-4">
+<h1 class="mt-4">Liste des employés</h1><hr>
 <div class="card mb-4">
     <div class="card-header">
         <i class="fas fa-table me-1"></i>
@@ -18,25 +19,24 @@
             <thead>
               <tr>
                 <th scope="col">Matricule</th>
+                <th scope="col">Prénom</th>
                 <th scope="col">Nom</th>
                 <th scope="col">Département</th>
                 <th scope="col">Salaire</th>
                 <th scope="col">Action</th>
-
-
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <th scope="row">{{ matricule }}</th>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-
-              </tr>
-            </tbody>
+              {% for user in list_users %}
+                  <tr>
+                      <td>{{ user['matricule'] }}</td>
+                      <td>{{ user['firstname'] }}</td>
+                      <td>{{ user['lastname'] }}</td>
+                      <td>{{ user['dep'] }}</td>
+                      <td>{{ user['salaire'] }}</td>
+                  </tr>
+              {% endfor %}
+          </tbody>
           </table>
     </div>
 </div>

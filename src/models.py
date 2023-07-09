@@ -15,6 +15,13 @@ class User(UserMixin,db.Model):
     address = db.Column(db.String(100))
     phone = db.Column(db.Integer)
     salaire = db.Column(db.Integer)
+
+    def __init__(self,matricule,first_name,last_name,dep_name,salaire):
+        self.matricule = matricule
+        self.first_name = first_name
+        self.last_name = last_name
+        self.dep_name = dep_name
+        self.salaire = salaire
     
     # override get_id function from UserMixin to return our custom user id (matricule)
     def get_id(self):
@@ -23,7 +30,10 @@ class User(UserMixin,db.Model):
 class Departements(db.Model):
     name = db.Column(db.String(20),primary_key=True)
     employee_count = db.Column(db.Integer)
-
+    
+    def __init__(self,name):
+        self.name = name
+    
 class demande_conge(db.Model):
     demande_id = db.Column(db.Integer,primary_key = True)
     type_conge = db.Column(db.String)
