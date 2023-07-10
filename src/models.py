@@ -16,11 +16,15 @@ class User(UserMixin,db.Model):
     phone = db.Column(db.Integer)
     salaire = db.Column(db.Integer)
 
-    def __init__(self,matricule,first_name,last_name,dep_name,salaire):
+    def __init__(self,matricule,first_name,last_name,email,password,dep_name,address,phone,salaire):
         self.matricule = matricule
         self.first_name = first_name
         self.last_name = last_name
+        self.email = email
+        self.password = password
         self.dep_name = dep_name
+        self.address = address
+        self.phone = phone
         self.salaire = salaire
     
     # override get_id function from UserMixin to return our custom user id (matricule)

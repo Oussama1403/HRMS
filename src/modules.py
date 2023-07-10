@@ -39,7 +39,7 @@ def RegisterAccount():
         return render_template("register.html")
     
     # create a new user with the form data.
-    new_user = User(matricule=matricule,first_name=first_name,last_name=last_name,email=email,password=password,phone=phone,address=address,dep_name = dep)
+    new_user = User(matricule=matricule,first_name=first_name,last_name=last_name,email=email,password=password,phone=phone,address=address,dep_name = dep,salaire=None)
     db.session.add(new_user)
     db.session.commit()
     flash("Your account has been successfully created !")
