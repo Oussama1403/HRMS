@@ -70,7 +70,8 @@ def liste_dep():
         list_dep.append({"name":dep.name,"count":dep_emp_count})
     return render_template('liste_dep.html',list_dep = list_dep,fullname = fullname,role=role)
 
-# auth
+
+# AUTH VIEWS
 
 @app.route("/login",methods=['POST','GET'])
 def login():
@@ -93,7 +94,7 @@ def register():
 def logout():
     return 'Logout'   
 
-# error handling
+# ERROR HANDLING
 
 @app.errorhandler(404)
 def page_not_found(error):
