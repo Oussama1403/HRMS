@@ -37,11 +37,9 @@ def demande_avance():
     fullname,role = fullname_role()
     return render_template('demande_avance.html',fullname = fullname,role=role)
 
-@app.route("/motdepass")
-@login_required
+@app.route("/motdepass",methods=['POST','GET'])
 def motdepass():
-    fullname,role = fullname_role()
-    return render_template('password.html',fullname = fullname,role=role)
+    return render_template('password.html')
 
 @app.route("/gere_conge")
 @login_required
@@ -103,3 +101,7 @@ def page_not_found(error):
 @app.errorhandler(500)
 def server_error(error):
     return render_template("500.html"), 500
+
+@app.errorhandler(401)
+def access_denied(error):
+    return render_template("401.html"), 401
