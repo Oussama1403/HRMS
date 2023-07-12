@@ -14,7 +14,18 @@
     <div id="layoutSidenav_content">
 
         <div class="container">
-            <h1 class="mt-4">Demande de congé </h1><hr>
+        
+            <!-- error message used by flask -->
+        <div class="container">
+            {% for message in get_flashed_messages() %}
+            <div class="alert alert-warning" role="alert">
+               <!--<button type="button" class="close" data-dismiss="alert">&times;</button>-->
+               <div style="text-align:center">{{ message }}</div>
+            </div>
+            {% endfor %}
+        </div>
+        
+        <h1 class="mt-4">Demande de congé </h1><hr>
 
             <!-- Apply Leave Form -->
             <div class="card pmd-card single-col-form">
@@ -36,13 +47,13 @@
                             <div class="col-md-6">
                                 <div class="form-group pmd-textfield pmd-textfield-floating-label">
                                     <label class="control-label" for="datepickerstart">Date de début</label>
-                                    <input type="text" class="form-control" id="datepickerstart" name="datepickerstart"><span class="pmd-textfield-focused"></span>
+                                    <input type="text" class="form-control" name="date_start"><span class="pmd-textfield-focused"></span>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group pmd-textfield pmd-textfield-floating-label">
                                     <label class="control-label" for="datepickerend">Date de fin</label>
-                                    <input type="text" class="form-control" id="datepickerend" name="datepickerend"><span class="pmd-textfield-focused"></span>
+                                    <input type="text" class="form-control" name="date_end" ><span class="pmd-textfield-focused"></span>
                                 </div>
                             </div>
                             <div class="col-12">

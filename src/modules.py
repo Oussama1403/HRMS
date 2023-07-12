@@ -5,6 +5,8 @@ from flask.wrappers import Request
 from flask_login import login_user,login_required,current_user
 from .app import app,db
 from .models import *
+from datetime import datetime
+
 
 def LoginAccount():
     matricule = request.form["matricule"]         
@@ -50,3 +52,21 @@ def fullname_role():
     user = Matricules.query.filter_by(matricule=current_user.matricule).first()
     is_admin = 'Administrateur' if user.is_admin == 1 else 'Employé'
     return (fullname,is_admin)
+
+def DemandeConge():
+    matricule = current_user.matricule
+    type_conge = request.form["leave-type"]
+    
+    date_deb = request.form["date_start"].strip()
+    date_deb = datetime.strptime(date_deb, '%d/%m/%Y')   
+    
+    date_fin = request.form["date_end"].strip()
+    date_fin = datetime.strptime(date_fin, '%d/%m/%Y')   
+
+    motif = request.form["reason"] 
+    
+    new = demande_conge(matricule=matricule,type_conge=type_conge,date_deb=date_deb,date_fin=date_fin,motif=motif)
+    db.session.add(new)
+    db.session.commit()
+    flash("leave request applied successfully")
+    return render_template("demande_conge.html")

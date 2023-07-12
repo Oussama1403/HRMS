@@ -29,8 +29,11 @@ def home():
 @app.route("/demande_conge",methods=['POST','GET'])
 @login_required
 def demande_conge():
-    fullname,role = fullname_role()
-    return render_template('demande_conge.html',fullname = fullname,role=role)
+    if request.method == 'POST':
+        return DemandeConge()
+    else:
+        fullname,role = fullname_role()
+        return render_template('demande_conge.html',fullname = fullname,role=role)
 
 @app.route("/demande_avance",methods=['POST','GET'])
 @login_required
