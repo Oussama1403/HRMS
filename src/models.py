@@ -39,14 +39,14 @@ class Departements(db.Model):
         self.name = name
     
 class demande_conge(db.Model):
-    demande_id = db.Column(db.Integer,primary_key = True)
+    matricule = db.Column(db.Integer,db.ForeignKey('matricules.matricule'),primary_key=True) #cle etranger
     type_conge = db.Column(db.String)
     date_deb = db.Column(db.DateTime)
     date_fin = db.Column(db.DateTime)
     motif = db.Column(db.String)
 
 class avance_salaire(db.Model):
-    demande_id = db.Column(db.Integer,primary_key = True)
+    matricule = db.Column(db.Integer,db.ForeignKey('matricules.matricule'),primary_key=True) #cle etranger
     montant = db.Column(db.Integer)
     motif = db.Column(db.String)    
 
