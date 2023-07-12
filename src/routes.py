@@ -23,23 +23,22 @@ def home():
     user = Matricules.query.filter_by(matricule=matricule).first()
     is_admin = 'Administrateur' if user.is_admin == 1 else 'Employé'
     return render_template('home.html',matricule=matricule,fullname=fullname,email=email,phone=phone,address=address,dep = dep,role=is_admin)
-    
 
-@app.route("/demande_conge")
+
+
+@app.route("/demande_conge",methods=['POST','GET'])
 @login_required
 def demande_conge():
     fullname,role = fullname_role()
     return render_template('demande_conge.html',fullname = fullname,role=role)
 
-@app.route("/demande_avance")
+@app.route("/demande_avance",methods=['POST','GET'])
 @login_required
 def demande_avance():
     fullname,role = fullname_role()
     return render_template('demande_avance.html',fullname = fullname,role=role)
 
-@app.route("/motdepass",methods=['POST','GET'])
-def motdepass():
-    return render_template('password.html')
+
 
 @app.route("/gere_conge")
 @login_required
@@ -52,6 +51,8 @@ def gere_conge():
 def gere_avance():
     fullname,role = fullname_role()
     return render_template('gere_avance.html',fullname = fullname,role=role)
+
+
 
 @app.route("/liste_employees")
 @login_required
@@ -73,6 +74,12 @@ def liste_dep():
         dep_emp_count = len(User.query.filter_by(dep_name = dep.name).all()) 
         list_dep.append({"name":dep.name,"count":dep_emp_count})
     return render_template('liste_dep.html',list_dep = list_dep,fullname = fullname,role=role)
+
+
+
+@app.route("/motdepass",methods=['POST','GET'])
+def motdepass():
+    return render_template('password.html')
 
 
 # AUTH VIEWS
@@ -97,6 +104,8 @@ def register():
 @app.route('/logout')
 def logout():
     return 'Logout'   
+
+
 
 # ERROR HANDLING
 

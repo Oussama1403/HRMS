@@ -5,3 +5,5 @@
 - Add Form validation.
 - Add logout option.
 - Addd Password Recovery Functionnality.
+- Update the README file.
+- Document the project
