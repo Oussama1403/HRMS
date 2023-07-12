@@ -38,6 +38,8 @@ def demande_conge():
 @app.route("/demande_avance",methods=['POST','GET'])
 @login_required
 def demande_avance():
+    if request.method == 'POST':
+        return DemandeAvance()
     fullname,role = fullname_role()
     return render_template('demande_avance.html',fullname = fullname,role=role)
 

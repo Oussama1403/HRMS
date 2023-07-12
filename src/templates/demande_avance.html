@@ -9,7 +9,15 @@
     <div id="layoutSidenav_content">
 
         <div class="container">
-            <!-- Apply Leave Form -->
+            <!-- error message used by flask -->
+        <div class="container">
+            {% for message in get_flashed_messages() %}
+            <div class="alert alert-warning" role="alert">
+               <!--<button type="button" class="close" data-dismiss="alert">&times;</button>-->
+               <div style="text-align:center">{{ message }}</div>
+            </div>
+            {% endfor %}
+        </div>
             <h1 class="mt-4">Demande d'avance sur salaire </h1><hr>
 
             <div class="card pmd-card single-col-form">
@@ -18,8 +26,8 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group pmd-textfield pmd-textfield-floating-label">
-                                    <label class="control-label" for="datepickerstart">Motant demande</label>
-                                    <input type="number" class="form-control" id="datepickerstart" name="datepickerstart"><span class="pmd-textfield-focused"></span>
+                                    <label class="control-label" for="montant">Motant demandé</label>
+                                    <input type="number" class="form-control" id="montant" name="montant"><span class="pmd-textfield-focused"></span>
                                 </div>
                             </div>
                             <div class="col-12">

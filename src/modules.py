@@ -70,3 +70,15 @@ def DemandeConge():
     db.session.commit()
     flash("leave request applied successfully")
     return render_template("demande_conge.html")
+
+def DemandeAvance():
+    matricule = current_user.matricule
+    montant = request.form["montant"]
+    motif = request.form["reason"] 
+    
+    new = avance_salaire(matricule=matricule,montant=montant,motif=motif)
+    db.session.add(new)
+    db.session.commit()
+    flash("salary advance applied successfully")
+    return render_template("demande_avance.html")
+
