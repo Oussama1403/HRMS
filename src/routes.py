@@ -47,6 +47,12 @@ def gere_conge():
     fullname,role = fullname_role()
     return render_template('gere_conge.html',fullname = fullname,role=role)
 
+@app.route("/gere_avance")
+@login_required
+def gere_avance():
+    fullname,role = fullname_role()
+    return render_template('gere_avance.html',fullname = fullname,role=role)
+
 @app.route("/liste_employees")
 @login_required
 def liste_employees():

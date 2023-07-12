@@ -1,7 +1,7 @@
 {% extends "base.html" %}
  
   {% block title %}
-     les demandes de congé
+    les demandes d'avance sur salaire
   {% endblock title %}
 
 {% block content %}
@@ -9,12 +9,12 @@
     <main>
         <div class="container-fluid px-4">
 
-<h1 class="mt-4">Les demandes de congé</h1><hr>
+<h1 class="mt-4">Les demandes d'avance sur salaire</h1><hr>
 
 <div class="card mb-4">
     <div class="card-header">
         <i class="fas fa-table me-1"></i>
-        liste des congés
+        liste des avances
     </div>
     <div class="card-body">
         <table class="table table-striped">
@@ -22,11 +22,10 @@
               <tr>
                 <th scope="col">Matricule</th>
                 <th scope="col">Nom</th>
-                <th scope="col">Date de début</th>
-                <th scope="col">Date de fin</th>
-                <th scope="col">Type de congé</th>
-                <th scope="col">Raison</th>
+                <th scope="col">Motant demandé</th>
+                <th scope="col">Motif</th>
                 <th scope="col">Action</th>
+
               </tr>
             </thead>
             <tbody>
