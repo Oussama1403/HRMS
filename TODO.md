@@ -7,3 +7,4 @@
 - Addd Password Recovery Functionnality.
 - Update the README file.
 - Document the project
+- this app in its early stage so a lot of other work must be done.
