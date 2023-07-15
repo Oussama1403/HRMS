@@ -26,9 +26,9 @@ def home():
 
 
 
-@app.route("/demande_conge",methods=['POST','GET'])
+@app.route("/conge",methods=['POST','GET'])
 @login_required
-def demande_conge():
+def conge():
     if request.method == 'POST':
         return DemandeConge()
     else:
@@ -49,13 +49,21 @@ def demande_avance():
 @login_required
 def gere_conge():
     fullname,role = fullname_role()
-    return render_template('gere_conge.html',fullname = fullname,role=role)
+    result = demande_conge.query.all()
+    list_conge = []
+    for conge in result:
+        list_conge.append({'matricule':conge.matricule,'nom':User.query.filter_by(matricule=conge.matricule).first().first_name,'type':conge.type_conge,'date_deb':conge.date_deb,'date_fin':conge.date_fin,'motif':conge.motif})
+    return render_template('gere_conge.html',fullname = fullname,role=role,list_conge=list_conge)
 
 @app.route("/gere_avance")
 @login_required
 def gere_avance():
     fullname,role = fullname_role()
-    return render_template('gere_avance.html',fullname = fullname,role=role)
+    result = avance_salaire.query.all()
+    list_avance = []
+    for avance in result:
+        list_avance.append({'matricule':avance.matricule,'nom':User.query.filter_by(matricule=avance.matricule).first().first_name,'montant':avance.montant,'motif':avance.motif})
+    return render_template('gere_avance.html',fullname = fullname,role=role,list_avance=list_avance)
 
 
 

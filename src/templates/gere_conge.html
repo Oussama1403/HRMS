@@ -30,15 +30,18 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <th scope="row">{{ matricule }}</th>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-
-              </tr>
+              {% for conge in list_conge %}
+                <tr>
+                  <th scope="row">{{ conge['matricule'] }}</th>
+                  <td>{{ conge['nom'] }}</td>
+                  <td>{{ conge['date_deb'] }}</td>
+                  <td>{{ conge['date_fin'] }}</td>
+                  <td>{{ conge['type'] }}</td>
+                  <td>{{ conge['motif'] }}</td>
+                  <td></td>
+                </tr>
+              {% endfor %}
+            
             </tbody>
           </table>
     </div>

@@ -30,14 +30,15 @@
             </thead>
             <tbody>
               <tr>
-                <th scope="row">{{ matricule }}</th>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-
-              </tr>
+                {% for avance in list_avance %}
+                <tr>
+                  <th scope="row">{{ avance['matricule'] }}</th>
+                  <td>{{ avance['nom'] }}</td>
+                  <td>{{ avance['montant'] }}</td>
+                  <td>{{ avance['motif'] }}</td>
+                  <td></td>
+                </tr>
+              {% endfor %}
             </tbody>
           </table>
     </div>

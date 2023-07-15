@@ -1,5 +1,6 @@
 ## TODO
 - Secure non-admin pages.
+- Enhance Exception Handling.
 - Add option to edit/delete an employee/departement.
 - Add Accept/Refuse leave application/Salary Advance.
 - Add Form validation.
