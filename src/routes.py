@@ -216,11 +216,9 @@ def liste_dep():
     return render_template('liste_dep.html',list_dep = list_dep,fullname = fullname,role=role)
 
 
-
 @app.route("/motdepass",methods=['POST','GET'])
 def motdepass():
     return render_template('password.html')
-
 
 # AUTH VIEWS
 
@@ -245,9 +243,6 @@ def register():
 def logout():
     logout_user()
     return redirect(url_for('login'))
-
-
-
 
 # ERROR HANDLING
 

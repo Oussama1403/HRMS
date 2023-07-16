@@ -8,4 +8,5 @@
 - Optimize and Organize Code 
 - Add Testing
 - Enhance Security
+- Change UI from french to English
 - a lot of other work.
