@@ -9,6 +9,15 @@
     <main>
         <div class="container-fluid px-4">
 <h1 class="mt-4">Liste des employés</h1><hr>
+                <!-- error message used by flask -->
+                <div class="container">
+                  {% for message in get_flashed_messages() %}
+                  <div class="alert alert-warning" role="alert">
+                     <!--<button type="button" class="close" data-dismiss="alert">&times;</button>-->
+                     <div style="text-align:center">{{ message }}</div>
+                  </div>
+                  {% endfor %}
+                 </div>
 <div class="card mb-4">
     <div class="card-header">
         <i class="fas fa-table me-1"></i>
@@ -28,13 +37,16 @@
             </thead>
             <tbody>
               {% for user in list_users %}
+              <form action="#" method="POST">
                   <tr>
-                      <td>{{ user['matricule'] }}</td>
+                      <td><input type="hidden" name="matricule" value="{{ user['matricule'] }}"/>{{ user['matricule'] }}</td>
                       <td>{{ user['firstname'] }}</td>
                       <td>{{ user['lastname'] }}</td>
                       <td>{{ user['dep'] }}</td>
                       <td>{{ user['salaire'] }}</td>
+                      <td><input name="Modifier" type="submit" value="Modifier" class="btn btn-primary" style="width:100%"/></td>
                   </tr>
+              </form>
               {% endfor %}
           </tbody>
           </table>

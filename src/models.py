@@ -44,9 +44,12 @@ class demande_conge(db.Model):
     date_deb = db.Column(db.DateTime)
     date_fin = db.Column(db.DateTime)
     motif = db.Column(db.String)
+    status = db.Column(db.Boolean)
+
 
 class avance_salaire(db.Model):
     matricule = db.Column(db.Integer,db.ForeignKey('matricules.matricule'),primary_key=True) #cle etranger
     montant = db.Column(db.Integer)
     motif = db.Column(db.String)    
+    status = db.Column(db.Boolean)
 

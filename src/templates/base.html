@@ -22,7 +22,7 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#!">Se déconnecter</a></li>
+                        <li><a class="dropdown-item" href="{{url_for('logout')}}">Se déconnecter</a></li>
                     </ul>
                 </li>
             </ul>
@@ -40,6 +40,10 @@
                             <a class="nav-link" href="{{url_for('demande_avance')}}">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 demande d'avance sur salaire
+                            </a>
+                            <a class="nav-link" href="{{url_for('suivie')}}">
+                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                Suivie des demandes
                             </a>
                             <div class="sb-sidenav-menu-heading">Administrateur</div>
                             <a class="nav-link" href="{{url_for('gere_conge')}}">

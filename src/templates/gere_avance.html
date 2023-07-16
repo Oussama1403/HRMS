@@ -8,7 +8,15 @@
 <div id="layoutSidenav_content">
     <main>
         <div class="container-fluid px-4">
-
+<!-- error message used by flask -->
+<div class="container">
+  {% for message in get_flashed_messages() %}
+  <div class="alert alert-warning" role="alert">
+     <!--<button type="button" class="close" data-dismiss="alert">&times;</button>-->
+     <div style="text-align:center">{{ message }}</div>
+  </div>
+  {% endfor %}
+ </div>
 <h1 class="mt-4">Les demandes d'avance sur salaire</h1><hr>
 
 <div class="card mb-4">
@@ -24,20 +32,22 @@
                 <th scope="col">Nom</th>
                 <th scope="col">Motant demandé</th>
                 <th scope="col">Motif</th>
-                <th scope="col">Action</th>
+                <th scope="col"></th>
 
               </tr>
             </thead>
             <tbody>
-              <tr>
                 {% for avance in list_avance %}
-                <tr>
-                  <th scope="row">{{ avance['matricule'] }}</th>
-                  <td>{{ avance['nom'] }}</td>
-                  <td>{{ avance['montant'] }}</td>
-                  <td>{{ avance['motif'] }}</td>
-                  <td></td>
-                </tr>
+                <form action="#" method="POST">
+                 <tr>
+                   <th scope="row"><input type="hidden" name="matricule" value="{{ avance['matricule'] }}"/>{{ avance['matricule'] }}</th>
+                   <td>{{ avance['nom'] }}</td>
+                   <td>{{ avance['montant'] }}</td>
+                   <td>{{ avance['motif'] }}</td>
+                   <td><input type="submit" name="submit_b" value="Accepter" class="btn btn-primary" style="width:100%"/></td>
+                   <td><input type="submit" name="submit_b" value="Refuser"  class="btn btn-primary" style="width:100%"/></td>
+                 </tr>
+                </form>
               {% endfor %}
             </tbody>
           </table>

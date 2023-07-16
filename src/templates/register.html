@@ -41,7 +41,7 @@
                                             <div class="row mb-3">
                                                 <div class="form-floating mb-3">
                                                     <div class="form-floating mb-3 mb-md-0">
-                                                        <input class="form-control" name="matricule" type="number" placeholder="Tapez votre matricule"/>
+                                                        <input class="form-control" name="matricule" type="number" placeholder="Tapez votre matricule" required/>
                                                         <label for="inputFirstName">Matricule</label>
                                                     </div>
                                                 </div>
@@ -49,36 +49,36 @@
                                             <div class="row mb-3">
                                                 <div class="col-md-6">
                                                     <div class="form-floating mb-3 mb-md-0">
-                                                        <input class="form-control" name="inputFirstName" type="text" placeholder="Entrez votre prénom" />
+                                                        <input class="form-control" name="inputFirstName" type="text" placeholder="Entrez votre prénom" required/>
                                                         <label for="inputFirstName">Prénom</label>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-floating">
-                                                        <input class="form-control" name="inputLastName" type="text" placeholder="Entrez votre nom" />
+                                                        <input class="form-control" name="inputLastName" type="text" placeholder="Entrez votre nom" required/>
                                                         <label for="inputLastName">Nom</label>
                                                     </div>
                                                 </div>
                                             </div>  
                                             <div class="form-floating mb-3">
-                                                <input class="form-control" name="inputEmail" type="email" placeholder="name@example.com" />
+                                                <input class="form-control" name="inputEmail" type="email" placeholder="name@example.com" required/>
                                                 <label for="inputEmail">Email address</label>
                                             </div>
                                             <div class="form-floating mb-3">
-                                                <input class="form-control" name="phone" type="phone" placeholder="Numéro du Téléphone"/>
+                                                <input class="form-control" name="phone" type="phone" placeholder="Numéro du Téléphone" required/>
                                                 <label for="phone">Numéro du Téléphone</label>
                                             </div>
                                             <div class="form-floating mb-3">
-                                                <input class="form-control" name="inputPassword" type="password" placeholder="Create a password" />
+                                                <input class="form-control" name="inputPassword" type="password" placeholder="Create a password" required/>
                                                     <label for="inputPassword">Mot de passe</label>
                                             </div>
                                             <div class="form-floating mb-3">
-                                                <input class="form-control" name="address" type="text" placeholder="Address" />
+                                                <input class="form-control" name="address" type="text" placeholder="Address" required/>
                                                     <label for="address">Address</label>
                                             </div>
                                             <div class="form-group pmd-textfield pmd-textfield-floating-label ">
                                                 <label for="dep">Choisir le département</label>
-                                                <select name="dep" id="dep" class="form-control" title="Département" required="">
+                                                <select name="dep" id="dep" class="form-control" title="Département" required>
                                                     <option></option>
                                                     <option>Production</option>
                                                     <option>Informatique</option>
@@ -102,6 +102,6 @@
                 </main>
             </div>
         </div>
-        <script src="js/scripts.js"></script>
+        <script src="/static/js/scripts.js"></script>
     </body>
 </html>

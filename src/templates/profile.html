@@ -5,7 +5,11 @@
   {% endblock title %}
 
 {% block content %}
-
+<style>
+  .d-flex {
+    gap:20px;
+  }
+</style>
             <div id="layoutSidenav_content">
 
                 <div class="container-fluid px-4">
@@ -14,7 +18,15 @@
                         <li class="breadcrumb-item active">Nom et Prénom : {{ fullname }} - Matricule : {{ matricule }}</li>
                     </ol>
                 </div>    
-                    
+                <!-- error message used by flask -->
+                <div class="container">
+                  {% for message in get_flashed_messages() %}
+                  <div class="alert alert-warning" role="alert">
+                     <!--<button type="button" class="close" data-dismiss="alert">&times;</button>-->
+                     <div style="text-align:center">{{ message }}</div>
+                  </div>
+                  {% endfor %}
+                 </div>
                 <section style="background-color: #eee;">
                     <div class="container py-5">
                       <div class="row">
@@ -26,17 +38,30 @@
                               <h5 class="my-3">{{ fullname }}</h5>
                               <p class="text-muted mb-1">{{ dep }}</p>
                               <p class="text-muted mb-4">{{ address }}</p>
+                              <div class="d-flex justify-content-center mb-2">
+                                <a href="mailto: {{ email }}" target="_blank" class="btn btn-primary">Contacter</a>
+                              </div>
                             </div>
                           </div>
+                      <form action="#" method="POST"> 
                         <div class="col-lg">
                           <div class="card mb-4">
                             <div class="card-body">
                               <div class="row">
                                 <div class="col-sm-3">
-                                  <p class="mb-0">Nom et Prénom</p>
+                                  <p class="mb-0">Prénom</p>
                                 </div>
                                 <div class="col-sm-9">
-                                  <p class="text-muted mb-0">{{ fullname }}</p>
+                                  <input type="text" value="{{ firstname }}" name="firstname">
+                                </div>
+                              </div>
+                              <hr>
+                              <div class="row">
+                                <div class="col-sm-3">
+                                  <p class="mb-0">Nom</p>
+                                </div>
+                                <div class="col-sm-9">
+                                  <input type="text" value="{{ lastname }}" name="lastname">
                                 </div>
                               </div>
                               <hr>                            
@@ -45,7 +70,7 @@
                                   <p class="mb-0">Email</p>
                                 </div>
                                 <div class="col-sm-9">
-                                  <p class="text-muted mb-0">{{ email }}</p>
+                                  <input type="text" value="{{ email }}" name="email"/>
                                 </div>
                               </div>
                               <hr>
@@ -54,7 +79,7 @@
                                   <p class="mb-0">Téléphone</p>
                                 </div>
                                 <div class="col-sm-9">
-                                  <p class="text-muted mb-0">{{ phone }}</p>
+                                  <input type="text" value="{{ phone }}" name="phone"/>
                                 </div>
                               </div>
                               <hr>
@@ -63,8 +88,7 @@
                                   <p class="mb-0">Département</p>
                                 </div>
                                 <div class="col-sm-9">
-                                  <p class="text-muted mb-0">{{ dep }}</p>
-                                </div>
+                                  <input type="text" value="{{ dep }}" name="dep"/>                               </div>
                               </div>
                               <hr>
                               <div class="row">
@@ -72,12 +96,17 @@
                                   <p class="mb-0">Adress</p>
                                 </div>
                                 <div class="col-sm-9">
-                                  <p class="text-muted mb-0">{{ address }}</p>
+                                  <input type="text" value="{{ address }}" name="address"/>
                                 </div>
                               </div>
                             </div>
                           </div>
                         </div>
+                        <div class="d-flex justify-content-center">
+                          <input type="submit" name="submit_b" value="Appliquer" class="btn btn-primary" />
+                          <input type="submit" name="submit_b" value="Supprimer" class="btn btn-danger" />
+                        </div>                      
+                      </form>  
                       </div>
                     </div>
                   </section>

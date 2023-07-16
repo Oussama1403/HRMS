@@ -1,0 +1,105 @@
+{% extends "base.html" %}
+ 
+  {% block title %}
+   Suivie des demandes  
+  {% endblock title %}
+
+{% block content %}
+<div id="layoutSidenav_content">
+    <main>
+        <div class="container-fluid px-4">
+<h1 class="mt-4">Les demandes de congé</h1><hr>
+<div class="card mb-4">
+    <div class="card-header">
+        <i class="fas fa-table me-1"></i>
+        liste des congés
+    </div>
+    <div class="card-body">
+        <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">Matricule</th>
+                <th scope="col">Nom</th>
+                <th scope="col">Date de début</th>
+                <th scope="col">Date de fin</th>
+                <th scope="col">Type de congé</th>
+                <th scope="col">Raison</th>
+                <th scope="col">État</th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody>
+                <tr>
+                  <th scope="row">{{ conge['matricule'] }}</th>
+                  <td>{{ conge['nom'] }}</td>
+                  <td>{{ conge['date_deb'] }}</td>
+                  <td>{{ conge['date_fin'] }}</td>
+                  <td>{{ conge['type'] }}</td>
+                  <td>{{ conge['motif'] }}</td>
+                  
+                  {% if conge['status'] == 'Accepté': %}
+                     <td class="text-success">{{ conge['status'] }}</td>
+                  {% elif conge['status'] == 'Refusé': %}
+                     <td class="text-danger">{{ conge['status'] }}</td>
+                  {% else :%}
+                    <td class=".text-primary">{{ conge['status'] }}</td>
+                  {% endif %}  
+
+                </tr>
+            
+            </tbody>
+          </table>
+    </div>
+    <h1 class="mt-4">Les demandes d'avance sur salaire</h1><hr>
+
+    <div class="card mb-4">
+        <div class="card-header">
+            <i class="fas fa-table me-1"></i>
+            liste des avances
+        </div>
+        <div class="card-body">
+            <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th scope="col">Matricule</th>
+                    <th scope="col">Nom</th>
+                    <th scope="col">Motant demandé</th>
+                    <th scope="col">Motif</th>
+                    <th scope="col">État</th>
+                    <th scope="col"></th>
+    
+                  </tr>
+                </thead>
+                <tbody>
+                     <tr>
+                       <th scope="row">{{ avance['matricule'] }}</th>
+                       <td>{{ avance['nom'] }}</td>
+                       <td>{{ avance['montant'] }}</td>
+                       <td>{{ avance['motif'] }}</td>
+                       
+                       {% if avance['status'] == 'Accepté': %}
+                          <td class="text-success">{{ avance['status'] }}</td>
+                       {% elif avance['status'] == 'Refusé': %}
+                          <td class="text-danger">{{ avance['status'] }}</td>
+                       {% else :%}
+                          <td class=".text-primary">{{ avance['status'] }}</td>
+                       {% endif %}  
+                    
+                     </tr>
+                </tbody>
+              </table>
+        </div>  
+</div>
+</div>
+</main>
+
+{% endblock content %}
+
+
+
+
+
+
+
+
+

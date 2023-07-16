@@ -8,7 +8,15 @@
 <div id="layoutSidenav_content">
     <main>
         <div class="container-fluid px-4">
-
+<!-- error message used by flask -->
+<div class="container">
+  {% for message in get_flashed_messages() %}
+  <div class="alert alert-warning" role="alert">
+     <!--<button type="button" class="close" data-dismiss="alert">&times;</button>-->
+     <div style="text-align:center">{{ message }}</div>
+  </div>
+  {% endfor %}
+ </div>
 <h1 class="mt-4">Les demandes de congé</h1><hr>
 
 <div class="card mb-4">
@@ -26,20 +34,24 @@
                 <th scope="col">Date de fin</th>
                 <th scope="col">Type de congé</th>
                 <th scope="col">Raison</th>
-                <th scope="col">Action</th>
+                <th scope="col"></th>
               </tr>
             </thead>
             <tbody>
               {% for conge in list_conge %}
+              <form action="#" method="POST">
                 <tr>
-                  <th scope="row">{{ conge['matricule'] }}</th>
+                  <th scope="row"><input type="hidden" name="matricule" value="{{ conge['matricule'] }}"/>{{ conge['matricule'] }}</th>
                   <td>{{ conge['nom'] }}</td>
                   <td>{{ conge['date_deb'] }}</td>
                   <td>{{ conge['date_fin'] }}</td>
                   <td>{{ conge['type'] }}</td>
                   <td>{{ conge['motif'] }}</td>
-                  <td></td>
+                  <td><input type="submit" name="submit_b" value="Accepter" class="btn btn-primary" style="width:100%"/></td>
+                  <td><input type="submit" name="submit_b" value="Refuser"  class="btn btn-primary" style="width:100%"/></td>
+
                 </tr>
+              </form>
               {% endfor %}
             
             </tbody>

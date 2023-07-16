@@ -2,7 +2,7 @@
 
 from flask import request,render_template,flash,redirect,url_for
 from flask.wrappers import Request
-from flask_login import login_user,login_required,current_user
+from flask_login import login_user,logout_user,login_required,current_user
 from .app import app,db
 from .models import *
 from datetime import datetime
@@ -82,3 +82,7 @@ def DemandeAvance():
     flash("salary advance applied successfully")
     return render_template("demande_avance.html")
 
+def AdminOnly():
+    matricule = current_user.matricule
+    user = Matricules.query.filter_by(matricule=matricule).first()
+    return True if user.is_admin == 1 else False

@@ -1,11 +1,11 @@
 ## TODO
-- Secure non-admin pages.
 - Enhance Exception Handling.
-- Add option to edit/delete an employee/departement.
-- Add Accept/Refuse leave application/Salary Advance.
 - Add Form validation.
-- Add logout option.
 - Addd Password Recovery Functionnality.
 - Update the README file.
 - Document the project
-- this app in its early stage so a lot of other work must be done.
+- Organize Files and Dirs 
+- Optimize and Organize Code 
+- Add Testing
+- Enhance Security
+- a lot of other work.
