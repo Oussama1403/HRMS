@@ -64,22 +64,28 @@ def DemandeConge():
     date_fin = datetime.strptime(date_fin, '%d/%m/%Y')   
 
     motif = request.form["reason"] 
-    
-    new = demande_conge(matricule=matricule,type_conge=type_conge,date_deb=date_deb,date_fin=date_fin,motif=motif)
-    db.session.add(new)
-    db.session.commit()
-    flash("leave request applied successfully")
+    try:
+        new = demande_conge(matricule=matricule,type_conge=type_conge,date_deb=date_deb,date_fin=date_fin,motif=motif)
+        db.session.add(new)
+        db.session.commit()
+        flash("demande de congé appliquée avec succès")
+    except:
+        flash("vous avez une demande de congé en attente")
+   
     return render_template("demande_conge.html")
 
 def DemandeAvance():
     matricule = current_user.matricule
     montant = request.form["montant"]
     motif = request.form["reason"] 
-    
-    new = avance_salaire(matricule=matricule,montant=montant,motif=motif)
-    db.session.add(new)
-    db.session.commit()
-    flash("salary advance applied successfully")
+    try:
+        new = avance_salaire(matricule=matricule,montant=montant,motif=motif)
+        db.session.add(new)
+        db.session.commit()
+        flash("avance sur salaire appliquée avec succès")
+    except:
+        flash("vous avez une demande d'avance sur salaire en attente")
+            
     return render_template("demande_avance.html")
 
 def AdminOnly():

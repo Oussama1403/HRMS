@@ -167,7 +167,7 @@ def edit_employee(matricule):
             address = request.form["address"]
             dep = request.form["dep"]
             phone = request.form["phone"]
-            
+            salaire = request.form["salaire"]
             # To update data, modify attributes on the model objects:
             
             user = User.query.filter_by(matricule=matricule).first()
@@ -177,7 +177,7 @@ def edit_employee(matricule):
             user.address = address
             user.dep_name = dep
             user.phone = phone
-            
+            user.salaire = salaire
             db.session.commit()
             flash("Account details have been saved successfully")            
             return redirect(url_for('edit_employee',matricule=matricule))
@@ -199,7 +199,8 @@ def edit_employee(matricule):
         phone = user.phone 
         dep = user.dep_name
         address = user.address
-        return render_template('profile.html',matricule=matricule,fullname = firstname + " " + lastname,firstname=firstname,lastname=lastname,email=email,phone=phone,address=address,dep = dep)
+        salaire = user.salaire
+        return render_template('profile.html',matricule=matricule,fullname = firstname + " " + lastname,firstname=firstname,lastname=lastname,email=email,phone=phone,address=address,dep = dep,salaire=salaire)
 
 @app.route("/liste_dep")
 @login_required
