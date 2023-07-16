@@ -85,4 +85,6 @@ def DemandeAvance():
 def AdminOnly():
     matricule = current_user.matricule
     user = Matricules.query.filter_by(matricule=matricule).first()
+    if user.is_admin == 0:
+        flash("Accès administratif uniquement")
     return True if user.is_admin == 1 else False

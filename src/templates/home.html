@@ -9,6 +9,16 @@
             <div id="layoutSidenav_content">
 
                 <div class="container-fluid px-4">
+                   <!-- error message used by flask -->
+                <div class="container">
+                  {% for message in get_flashed_messages() %}
+                  <div class="alert alert-warning" role="alert">
+                     <!--<button type="button" class="close" data-dismiss="alert">&times;</button>-->
+                     <div style="text-align:center">{{ message }}</div>
+                  </div>
+                  {% endfor %}
+                 </div>
+                 
                     <h1 class="mt-4">Profile</h1>
                     <ol class="breadcrumb mb-4">
                         <li class="breadcrumb-item active bg-secondary text-white"><b>Nom et Prénom :</b> {{ fullname }} <br> <b> Matricule : </b>{{ matricule }}</li>
