@@ -11,7 +11,7 @@
                 <div class="container-fluid px-4">
                     <h1 class="mt-4">Profile</h1>
                     <ol class="breadcrumb mb-4">
-                        <li class="breadcrumb-item active">Nom et Prénom : {{ fullname }} - Matricule : {{ matricule }}</li>
+                        <li class="breadcrumb-item active bg-secondary text-white"><b>Nom et Prénom :</b> {{ fullname }} <br> <b> Matricule : </b>{{ matricule }}</li>
                     </ol>
                 </div>    
                     
@@ -24,8 +24,8 @@
                               <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" alt="avatar"
                                 class="rounded-circle img-fluid" style="width: 150px;">
                               <h5 class="my-3">{{ fullname }}</h5>
-                              <p class="text-muted mb-1">{{ dep }}</p>
-                              <p class="text-muted mb-4">{{ address }}</p>
+                              <p class="font-weight-bold mb-1">{{ dep }}</p>
+                              <p class="font-weight-bold mb-4">{{ address }}</p>
                             </div>
                           </div>
                         <div class="col-lg">

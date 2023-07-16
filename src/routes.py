@@ -104,6 +104,8 @@ def gere_avance():
 @app.route('/suivie')
 @login_required
 def suivie():
+    fullname,role = fullname_role()
+
     matricule = current_user.matricule
     conge = demande_conge.query.filter_by(matricule=matricule).first()
     avance = avance_salaire.query.filter_by(matricule=matricule).first()
@@ -127,9 +129,9 @@ def suivie():
                 avance_status = 'Attente'  
             avance_status = 'Accepté' if avance.status == 1 else 'Refusé'
             list_avance = {'matricule':avance.matricule,'nom':User.query.filter_by(matricule=avance.matricule).first().first_name,'montant':avance.montant,'motif':avance.motif,'status':avance_status}
-        return render_template('suivie.html',conge=list_conge,avance=list_avance)
+        return render_template('suivie.html',conge=list_conge,avance=list_avance,fullname = fullname,role=role)
     else:
-       return render_template('suivie.html',conge=None,avance=None)
+       return render_template('suivie.html',conge=None,avance=None,fullname = fullname,role=role)
 
 
 @app.route("/liste_employees",methods=['POST','GET'])

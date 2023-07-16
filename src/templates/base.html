@@ -29,10 +29,10 @@
         </nav>
         <div id="layoutSidenav">
             <div id="layoutSidenav_nav">
-                <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+                <nav class="sb-sidenav accordion sb-sidenav-light" id="sidenavAccordion">
                     <div class="sb-sidenav-menu">
                         <div class="nav">
-                            <div class="sb-sidenav-menu-heading">employé</div>
+                            <div class="sb-sidenav-menu-heading"><b>employé</b></div>
                             <a class="nav-link" href="{{url_for('conge')}}">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 demande de congé
@@ -45,14 +45,14 @@
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Suivie des demandes
                             </a>
-                            <div class="sb-sidenav-menu-heading">Administrateur</div>
+                            <div class="sb-sidenav-menu-heading"><b>Administrateur</b></div>
                             <a class="nav-link" href="{{url_for('gere_conge')}}">
                                 <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                                 les demandes de congé
                             </a>
                             <a class="nav-link" href="{{url_for('gere_avance')}}">
                                 <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-                                les demandes de salaire
+                                les demandes d'avance
                             </a>
                             <a class="nav-link" href="{{url_for('liste_employees')}}">
                                 <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
