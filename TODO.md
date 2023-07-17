@@ -10,3 +10,4 @@
 - Enhance Security
 - Change UI from french to English
 - a lot of other work.
+- Migrate to MySQL
