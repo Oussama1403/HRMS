@@ -56,12 +56,15 @@ def fullname_role():
 def DemandeConge():
     matricule = current_user.matricule
     type_conge = request.form["leave-type"]
-    
-    date_deb = request.form["date_start"].strip()
-    date_deb = datetime.strptime(date_deb, '%d/%m/%Y')   
-    
-    date_fin = request.form["date_end"].strip()
-    date_fin = datetime.strptime(date_fin, '%d/%m/%Y')   
+    try:
+        date_deb = request.form["date_start"].strip()
+        date_deb = datetime.strptime(date_deb, '%d/%m/%Y')   
+        
+        date_fin = request.form["date_end"].strip()
+        date_fin = datetime.strptime(date_fin, '%d/%m/%Y')   
+    except:
+        flash("date erroné")        
+        return render_template("demande_conge.html")
 
     motif = request.form["reason"] 
     try:
