@@ -4,10 +4,12 @@
 - Addd Password Recovery Functionnality.
 - Update the README file.
 - Document the project
-- Organize Files and Dirs 
+- Restructure the project 
 - Optimize and Organize Code 
 - Add Testing
 - Enhance Security
 - Change UI from french to English
 - a lot of other work.
-- Migrate to MySQL
+- Migrate to MySQL 
+- Migrate to Angular
+- separate employee dashboard and admin dashboard
