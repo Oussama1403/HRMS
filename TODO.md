@@ -14,3 +14,5 @@
 - Migrate to Tailwind css
 - separate employee dashboard and admin dashboard
 - update CHANGELOG and Release first stable and complete version.
+- BUG: deleting an employee does not delete its leave application which causes an error.
+- Every change must update all the DB's tables to protect the link between the tables.

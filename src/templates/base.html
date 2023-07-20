@@ -22,7 +22,7 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="{{url_for('logout')}}">Se déconnecter</a></li>
+                        <li><a class="dropdown-item" href="{{url_for('auth.logout')}}">Se déconnecter</a></li>
                     </ul>
                 </li>
             </ul>
@@ -46,19 +46,19 @@
                                 Suivie des demandes
                             </a>
                             <div class="sb-sidenav-menu-heading"><b>Administrateur</b></div>
-                            <a class="nav-link" href="{{url_for('gere_conge')}}">
+                            <a class="nav-link" href="{{url_for('admin.gere_conge')}}">
                                 <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                                 les demandes de congé
                             </a>
-                            <a class="nav-link" href="{{url_for('gere_avance')}}">
+                            <a class="nav-link" href="{{url_for('admin.gere_avance')}}">
                                 <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                                 les demandes d'avance
                             </a>
-                            <a class="nav-link" href="{{url_for('liste_employees')}}">
+                            <a class="nav-link" href="{{url_for('admin.liste_employees')}}">
                                 <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                                 liste des employés
                             </a>
-                            <a class="nav-link" href="{{url_for('liste_dep')}}">
+                            <a class="nav-link" href="{{url_for('admin.liste_dep')}}">
                                 <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                                 liste des départements
                             </a>
