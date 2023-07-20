@@ -1,18 +1,18 @@
 ## TODO
-- Enhance Exception Handling.
-- Add Form validation.
-- Addd Password Recovery Functionnality.
+- Improve Exception Handling.
+- Implement Form Validation.
+- Create Password Recovery Functionality.
 - Update the README file.
-- Document the project
-- Restructure the project with Flask Blueprints.
-- Optimize and Organize Code 
-- Add Testing
-- Enhance Security
-- Change UI from french to English
-- a lot of other work.
-- Migrate to MySQL 
-- Migrate to Tailwind css
-- separate employee dashboard and admin dashboard
-- update CHANGELOG and Release first stable and complete version.
-- BUG: deleting an employee does not delete its leave application which causes an error.
-- Every change must update all the DB's tables to protect the link between the tables.
+- Document the project thoroughly.
+- Reorganize the project using Flask Blueprints.
+- Optimize and Organize the Codebase.
+- Introduce Testing.
+- Enhance Security Measures.
+- Translate UI from French to English.
+- Migrate to MySQL Database.
+- Migrate to Tailwind CSS for improved styling.
+- Separate Employee Dashboard and Admin Dashboard functionality.
+- Update CHANGELOG and Release the first stable and complete version.
+- BUG: Resolve issue where deleting an employee does not delete their leave application, causing an error.
+- Ensure that every change properly updates all related database tables to maintain data integrity.
+- Address and fix various existing bugs.
