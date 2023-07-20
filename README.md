@@ -29,41 +29,75 @@ The repository has the following structure:
 ├── README.md
 ├── requirements.txt
 ├── src
+│   ├── admin
+│   │   ├── __init__.py
+│   │   ├── modules.py
+│   │   ├── __pycache__
+│   │   │   ├── __init__.cpython-310.pyc
+│   │   │   ├── modules.cpython-310.pyc
+│   │   │   └── routes.cpython-310.pyc
+│   │   └── routes.py
 │   ├── app.py
+│   ├── auth
+│   │   ├── __init__.py
+│   │   ├── modules.py
+│   │   ├── __pycache__
+│   │   │   ├── __init__.cpython-310.pyc
+│   │   │   ├── modules.cpython-310.pyc
+│   │   │   └── routes.cpython-310.pyc
+│   │   └── routes.py
 │   ├── config.py
+│   ├── home
+│   │   ├── __init__.py
+│   │   ├── __pycache__
+│   │   │   ├── __init__.cpython-310.pyc
+│   │   │   └── routes.cpython-310.pyc
+│   │   └── routes.py
 │   ├── models.py
-│   ├── modules.py
 │   ├── __pycache__
 │   │   ├── app.cpython-310.pyc
 │   │   ├── app.cpython-311.pyc
 │   │   ├── models.cpython-310.pyc
 │   │   ├── modules.cpython-310.pyc
 │   │   └── routes.cpython-310.pyc
-│   ├── routes.py
 │   ├── static
 │   │   ├── css
 │   │   │   └── styles.css
 │   │   └── js
 │   │       ├── datatables-simple-demo.js
 │   │       └── scripts.js
-│   └── templates
-│       ├── 401.html
-│       ├── 404.html
-│       ├── 500.html
-│       ├── base.html
-│       ├── demande_avance.html
-│       ├── demande_conge.html
-│       ├── gere_avance.html
-│       ├── gere_conge.html
-│       ├── home.html
-│       ├── liste_dep.html
-│       ├── liste_employees.html
-│       ├── login.html
-│       ├── password.html
-│       ├── profile.html
-│       ├── register.html
-│       └── suivie.html
+│   ├── templates
+│   │   ├── admin
+│   │   │   ├── gere_avance.html
+│   │   │   ├── gere_conge.html
+│   │   │   ├── liste_dep.html
+│   │   │   ├── liste_employees.html
+│   │   │   └── profile.html
+│   │   ├── auth
+│   │   │   ├── login.html
+│   │   │   ├── password.html
+│   │   │   └── register.html
+│   │   ├── base.html
+│   │   ├── home
+│   │   │   ├── 401.html
+│   │   │   ├── 404.html
+│   │   │   ├── 500.html
+│   │   │   └── home.html
+│   │   └── user
+│   │       ├── demande_avance.html
+│   │       ├── demande_conge.html
+│   │       └── suivie.html
+│   └── user
+│       ├── __init__.py
+│       ├── modules.py
+│       ├── __pycache__
+│       │   ├── __init__.cpython-310.pyc
+│       │   ├── modules.cpython-310.pyc
+│       │   └── routes.cpython-310.pyc
+│       └── routes.py
 └── TODO.md
+
+21 directories, 59 files
 
 ```
 
