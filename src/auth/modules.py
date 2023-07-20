@@ -2,6 +2,7 @@ from flask import request,render_template,flash,redirect,url_for
 from flask_login import login_user
 from src.app import db
 from src.models import *
+from src.home import home
 
 def LoginAccount():
     matricule = request.form["matricule"]         
@@ -12,7 +13,7 @@ def LoginAccount():
         return render_template('auth/login.html')
     
     login_user(user,False)
-    return redirect(url_for('home'))
+    return redirect(url_for('home.home'))
 
 def RegisterAccount():
     matricule = request.form["matricule"]         

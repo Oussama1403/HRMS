@@ -14,7 +14,7 @@
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
             <!-- Navbar Brand-->
-            <a class="navbar-brand ps-3" href="{{url_for('home')}}" style="letter-spacing: 4px;"><b>GRH-CPG</b></a>
+            <a class="navbar-brand ps-3" href="{{url_for('home.home')}}" style="letter-spacing: 4px;"><b>GRH-CPG</b></a>
             <!-- Sidebar Toggle-->
             <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>          
             <!-- Navbar-->
@@ -33,15 +33,15 @@
                     <div class="sb-sidenav-menu">
                         <div class="nav">
                             <div class="sb-sidenav-menu-heading"><b>employé</b></div>
-                            <a class="nav-link" href="{{url_for('conge')}}">
+                            <a class="nav-link" href="{{url_for('user.conge')}}">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 demande de congé
                             </a>
-                            <a class="nav-link" href="{{url_for('demande_avance')}}">
+                            <a class="nav-link" href="{{url_for('user.demande_avance')}}">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 demande d'avance sur salaire
                             </a>
-                            <a class="nav-link" href="{{url_for('suivie')}}">
+                            <a class="nav-link" href="{{url_for('user.suivie')}}">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Suivie des demandes
                             </a>

@@ -4,13 +4,14 @@ from src.app import app,db
 from src.models import *
 from .modules import *
 from . import admin
+#from src.home import home
 
 @admin.route("/gere_conge",methods=['POST','GET'])
 @login_required
 def gere_conge():
     result = AdminOnly()
     if result == False:
-        return redirect(url_for('home'))
+        return redirect(url_for('home.home'))
     if request.method == 'POST':
         
         matricule=request.form["matricule"]
@@ -40,7 +41,7 @@ def gere_conge():
 def gere_avance():
     result = AdminOnly()
     if result == False:
-        return redirect(url_for('home'))
+        return redirect(url_for('home.home'))
     if request.method == 'POST':
         
         matricule=request.form["matricule"]
@@ -68,7 +69,7 @@ def gere_avance():
 def liste_employees():
     result = AdminOnly()
     if result == False:
-        return redirect(url_for('home'))    
+        return redirect(url_for('home.home'))    
     if request.method == 'POST':
         return redirect(url_for('admin.edit_employee',matricule=request.form["matricule"]))
     fullname,role = fullname_role()
@@ -83,7 +84,7 @@ def liste_employees():
 def edit_employee(matricule):
     result = AdminOnly()
     if result == False:
-        return redirect(url_for('home'))    
+        return redirect(url_for('home.home'))    
     if request.method == 'POST':
         # update user made if apply changes button is pressed or delete user if delete button if pressed.
         if request.form['submit_b'] == "Appliquer":
@@ -136,7 +137,7 @@ def edit_employee(matricule):
 def liste_dep():
     result = AdminOnly()
     if result == False:
-        return redirect(url_for('home'))
+        return redirect(url_for('home.home'))
     fullname,role = fullname_role()
     deps = Departements.query.all()
     list_dep = []

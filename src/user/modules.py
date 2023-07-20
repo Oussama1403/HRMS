@@ -1,11 +1,9 @@
-"""Main project modules"""
-
-from flask import request,render_template,flash
-from flask.wrappers import Request
-from flask_login import current_user
-from .app import app,db
-from .models import *
+from flask import request,render_template,flash,redirect,url_for
+from flask_login import login_user,current_user
+from src.app import db
+from src.models import *
 from datetime import datetime
+
 
 def fullname_role():
     fullname = current_user.first_name + " " + current_user.last_name
@@ -24,7 +22,7 @@ def DemandeConge():
         date_fin = datetime.strptime(date_fin, '%d/%m/%Y')   
     except:
         flash("date erroné")        
-        return render_template("demande_conge.html")
+        return render_template("user/demande_conge.html")
 
     motif = request.form["reason"] 
     try:
@@ -35,7 +33,7 @@ def DemandeConge():
     except:
         flash("vous avez une demande de congé en attente")
    
-    return render_template("demande_conge.html")
+    return render_template("user/demande_conge.html")
 
 def DemandeAvance():
     matricule = current_user.matricule
@@ -49,11 +47,4 @@ def DemandeAvance():
     except:
         flash("vous avez une demande d'avance sur salaire en attente")
             
-    return render_template("demande_avance.html")
-
-def AdminOnly():
-    matricule = current_user.matricule
-    user = Matricules.query.filter_by(matricule=matricule).first()
-    if user.is_admin == 0:
-        flash("Accès administratif uniquement")
-    return True if user.is_admin == 1 else False
+    return render_template("user/demande_avance.html")
