@@ -5,6 +5,10 @@ from src.models import *
 from flask_login import login_user,login_required,current_user
 from . import home
 
+@home.route('/',methods=['GET'])
+def base():
+    return redirect(url_for('home.home'))
+
 @home.route('/home',methods=['POST','GET'])
 @login_required
 def home():

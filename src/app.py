@@ -4,13 +4,11 @@ from flask import Flask,render_template,redirect,url_for
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
 
-
 app = Flask(__name__)
 
 app.config.from_pyfile('./config.py')
 
 db = SQLAlchemy(app)
-
 
 app.config['SESSION_SQLALCHEMY'] = db
 
@@ -28,7 +26,7 @@ from .user import user as user_blueprint
 app.register_blueprint(user_blueprint,url_prefix='/user')
 
 from .home import home as home_blueprint
-app.register_blueprint(home_blueprint,url_prefix='/home')
+app.register_blueprint(home_blueprint)
 
 login_manager = LoginManager()
 login_manager.login_view = 'auth.login'
@@ -56,9 +54,7 @@ def server_error(error):
 def access_denied(error):
     return render_template("home/401.html"), 401    
 
-@app.route('/',methods=['GET'])
-def base():
-    return redirect(url_for('home.home'))
+
 
 
 
