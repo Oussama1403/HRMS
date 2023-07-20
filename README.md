@@ -1,6 +1,6 @@
 # Human Resources Management System (HRMS)
 
-Welcome to the Human Resources Management System (HRMS) repository! This web-based application provides a basic, beautiful, and modern solution for managing various aspects of human resources within an organization. With a user-friendly interface and robust functionalities, HRMS simplifies HR-related tasks and enhances efficiency.
+HRMS is a web-based application provides a basic, beautiful, and modern solution for managing various aspects of human resources within an organization. With a user-friendly interface and robust functionalities, HRMS simplifies HR-related tasks and enhances efficiency.
 
 ## Technologies Used
 
