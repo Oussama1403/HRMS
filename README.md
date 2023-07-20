@@ -2,7 +2,7 @@
 
 HRMS is a web-based application provides a basic, beautiful, and modern solution for managing various aspects of human resources within an organization. With a user-friendly interface and robust functionalities, HRMS simplifies HR-related tasks and enhances efficiency.
 
-<b>Please keep in mind that </b> Hrms is in its early stages, your feedback and contributions are very important in shaping the app's future.Thank you in advance for your contributions :).
+<b>Please kindly note </b> that Hrms is currently in its early stages of development. Your valuable feedback and contributions play a crucial role in shaping the future of the app. We sincerely appreciate your willingness to be a part of this journey and thank you in advance for your valuable contributions! :)
 
 ## Technologies Used
 
