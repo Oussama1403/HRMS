@@ -44,15 +44,15 @@ with app.app_context(): #solves: RuntimeError(unbound_message) from None Runtime
 
 @app.errorhandler(404)
 def page_not_found(error):
-    return render_template("home/404.html"), 404
+    return render_template("errors/404.html"), 404
 
 @app.errorhandler(500)
 def server_error(error):
-    return render_template("home/500.html"), 500
+    return render_template("errors/500.html"), 500
 
 @app.errorhandler(401)
 def access_denied(error):
-    return render_template("home/401.html"), 401    
+    return render_template("errors/401.html"), 401    
 
 
 

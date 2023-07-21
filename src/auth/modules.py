@@ -37,7 +37,8 @@ def RegisterAccount():
         return render_template("auth/register.html")
     
     # create a new user with the form data.
-    new_user = User(matricule=matricule,first_name=first_name,last_name=last_name,email=email,password=password,phone=phone,address=address,dep_name = dep,salaire=None)
+    is_admin = Matricules.query.filter_by(matricule=matricule).first().is_admin
+    new_user = User(matricule=matricule,first_name=first_name,last_name=last_name,email=email,password=password,phone=phone,address=address,dep_name = dep,salaire=None,is_admin = is_admin)
     db.session.add(new_user)
     db.session.commit()
     flash("Your account has been successfully created !")

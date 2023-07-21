@@ -15,8 +15,9 @@ class User(UserMixin,db.Model):
     address = db.Column(db.String(100))
     phone = db.Column(db.Integer)
     salaire = db.Column(db.Integer)
+    is_admin = db.Column(db.Boolean,db.ForeignKey('matricules.is_admin'))
 
-    def __init__(self,matricule,first_name,last_name,email,password,dep_name,address,phone,salaire):
+    def __init__(self,matricule,first_name,last_name,email,password,dep_name,address,phone,salaire,is_admin):
         self.matricule = matricule
         self.first_name = first_name
         self.last_name = last_name
@@ -26,6 +27,7 @@ class User(UserMixin,db.Model):
         self.address = address
         self.phone = phone
         self.salaire = salaire
+        self.is_admin = is_admin
     
     # override get_id function from UserMixin to return our custom user id (matricule)
     def get_id(self):

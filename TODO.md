@@ -16,3 +16,4 @@
 - BUG: Resolve issue where deleting an employee does not delete their leave application, causing an error.
 - Ensure that every change properly updates all related database tables to maintain data integrity.
 - Address and fix various existing bugs.
+- Add Schema migrations

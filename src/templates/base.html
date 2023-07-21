@@ -32,36 +32,41 @@
                 <nav class="sb-sidenav accordion sb-sidenav-light" id="sidenavAccordion">
                     <div class="sb-sidenav-menu">
                         <div class="nav">
-                            <div class="sb-sidenav-menu-heading"><b>employé</b></div>
-                            <a class="nav-link" href="{{url_for('user.conge')}}">
-                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                                demande de congé
-                            </a>
-                            <a class="nav-link" href="{{url_for('user.demande_avance')}}">
-                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                                demande d'avance sur salaire
-                            </a>
-                            <a class="nav-link" href="{{url_for('user.suivie')}}">
-                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                                Suivie des demandes
-                            </a>
-                            <div class="sb-sidenav-menu-heading"><b>Administrateur</b></div>
-                            <a class="nav-link" href="{{url_for('admin.gere_conge')}}">
-                                <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-                                les demandes de congé
-                            </a>
-                            <a class="nav-link" href="{{url_for('admin.gere_avance')}}">
-                                <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-                                les demandes d'avance
-                            </a>
-                            <a class="nav-link" href="{{url_for('admin.liste_employees')}}">
-                                <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                                liste des employés
-                            </a>
-                            <a class="nav-link" href="{{url_for('admin.liste_dep')}}">
-                                <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                                liste des départements
-                            </a>
+                            
+                            {% if current_user.is_admin == 0: %}
+
+                                <div class="sb-sidenav-menu-heading"><b>employé</b></div>
+                                <a class="nav-link" href="{{url_for('user.conge')}}">
+                                    <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                    demande de congé
+                                </a>
+                                <a class="nav-link" href="{{url_for('user.demande_avance')}}">
+                                    <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                    demande d'avance sur salaire
+                                </a>
+                                <a class="nav-link" href="{{url_for('user.suivie')}}">
+                                    <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                    Suivie des demandes
+                                </a>
+                            {% else: %}    
+                                <div class="sb-sidenav-menu-heading"><b>Administrateur</b></div>
+                                <a class="nav-link" href="{{url_for('admin.gere_conge')}}">
+                                    <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                                    les demandes de congé
+                                </a>
+                                <a class="nav-link" href="{{url_for('admin.gere_avance')}}">
+                                    <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                                    les demandes d'avance
+                                </a>
+                                <a class="nav-link" href="{{url_for('admin.liste_employees')}}">
+                                    <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                                    liste des employés
+                                </a>
+                                <a class="nav-link" href="{{url_for('admin.liste_dep')}}">
+                                    <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                                    liste des départements
+                                </a>
+                            {% endif %}    
                         </div>
                     </div>
                     <div class="sb-sidenav-footer">
