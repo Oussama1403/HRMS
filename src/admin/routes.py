@@ -130,7 +130,7 @@ def edit_employee(matricule):
         dep = user.dep_name
         address = user.address
         salaire = user.salaire
-        return render_template('admin/profile.html',matricule=matricule,fullname = firstname + " " + lastname,firstname=firstname,lastname=lastname,email=email,phone=phone,address=address,dep = dep,salaire=salaire)
+        return render_template('admin/edit.html',matricule=matricule,fullname = firstname + " " + lastname,firstname=firstname,lastname=lastname,email=email,phone=phone,address=address,dep = dep,salaire=salaire)
 
 @admin.route("/liste_dep")
 @login_required
