@@ -15,10 +15,10 @@ CREATE TABLE departements (
 	PRIMARY KEY (name)
 );
 INSERT INTO departements VALUES('Production',NULL);
-INSERT INTO departements VALUES('Gestion',NULL);
+INSERT INTO departements VALUES('Management',NULL);
 INSERT INTO departements VALUES('Marketing',NULL);
-INSERT INTO departements VALUES('Vente',NULL);
-INSERT INTO departements VALUES('Informatique',NULL);
+INSERT INTO departements VALUES('Sales',NULL);
+INSERT INTO departements VALUES('IT',NULL);
 CREATE TABLE user (
 	matricule INTEGER NOT NULL, 
 	first_name VARCHAR(20), 
@@ -29,32 +29,31 @@ CREATE TABLE user (
 	address VARCHAR(100), 
 	phone INTEGER, 
 	salaire INTEGER, 
+	is_admin BOOLEAN, 
 	PRIMARY KEY (matricule), 
 	FOREIGN KEY(matricule) REFERENCES matricules (matricule), 
 	UNIQUE (email), 
-	FOREIGN KEY(dep_name) REFERENCES departements (name)
+	FOREIGN KEY(dep_name) REFERENCES departements (name), 
+	FOREIGN KEY(is_admin) REFERENCES matricules (is_admin)
 );
-INSERT INTO user VALUES(111777,'Adel','Bougrine','adelbougrine@gmail.com','adel','Marketing','Cité Nour-Gafsa',95001300,1200);
-INSERT INTO user VALUES(222333,'Oussama','Ben Sassi','obensassi.03@gmail.com','2003','Informatique','Lala-Gafsa',25730171,2500);
-INSERT INTO user VALUES(654321,'Ahmed','Ben Ali','ahmed.2003@gmail.com','ahmed','Informatique','Lala-Gafsa',95713962,800);
-INSERT INTO user VALUES(999666,'Ala','Hamed','ala.03@gmail.com','ala','Vente','Gsar-Gafsa',43258974,1200);
+INSERT INTO user VALUES(222333,'Oussama','Ben Sassi','obensassi.03@gmail.com','oussama','Informatique','Lala-Gafsa',25730171,2500,1);
+INSERT INTO user VALUES(999666,'Adel','Bougrine','adelbougrine@gmail.com','adel','Vente','Cité Nour-Gafsa',95123741,1200,0);
 CREATE TABLE demande_conge (
 	matricule INTEGER NOT NULL, 
 	type_conge VARCHAR, 
 	date_deb DATETIME, 
 	date_fin DATETIME, 
-	motif VARCHAR, status BOOLEAN, 
+	motif VARCHAR, 
+	status BOOLEAN, 
 	PRIMARY KEY (matricule), 
 	FOREIGN KEY(matricule) REFERENCES matricules (matricule)
 );
-INSERT INTO demande_conge VALUES(111777,'Congé occasionnel','2023-07-16 00:00:00.000000','2023-08-16 00:00:00.000000','Voyage',NULL);
-INSERT INTO demande_conge VALUES(222333,'Congé de maladie','2023-07-12 00:00:00.000000','2023-07-31 00:00:00.000000','maladie',1);
 CREATE TABLE avance_salaire (
 	matricule INTEGER NOT NULL, 
 	montant INTEGER, 
-	motif VARCHAR, status BOOLEAN, 
+	motif VARCHAR, 
+	status BOOLEAN, 
 	PRIMARY KEY (matricule), 
 	FOREIGN KEY(matricule) REFERENCES matricules (matricule)
 );
-INSERT INTO avance_salaire VALUES(222333,700,'maladie',0);
 COMMIT;

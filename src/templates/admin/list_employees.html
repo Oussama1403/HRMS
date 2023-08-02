@@ -1,14 +1,14 @@
 {% extends "base.html" %}
  
   {% block title %}
-  Liste des employés
+  List of employees
   {% endblock title %}
 
 {% block content %}
 <div id="layoutSidenav_content">
     <main>
         <div class="container-fluid px-4">
-<h1 class="mt-4">Liste des employés</h1><hr>
+<h1 class="mt-4">List of employees</h1><hr>
                 <!-- error message used by flask -->
                 <div class="container">
                   {% for message in get_flashed_messages() %}
@@ -21,17 +21,17 @@
 <div class="card mb-4">
     <div class="card-header">
         <i class="fas fa-table me-1"></i>
-        liste des employés
+        List of employees
     </div>
     <div class="card-body">
         <table class="table table-striped">
             <thead>
               <tr>
                 <th scope="col">Matricule</th>
-                <th scope="col">Prénom</th>
-                <th scope="col">Nom</th>
-                <th scope="col">Département</th>
-                <th scope="col">Salaire</th>
+                <th scope="col">First name</th>
+                <th scope="col">Name</th>
+                <th scope="col">Department</th>
+                <th scope="col">Salary</th>
                 <th scope="col">Action</th>
               </tr>
             </thead>
@@ -43,8 +43,8 @@
                       <td>{{ user['firstname'] }}</td>
                       <td>{{ user['lastname'] }}</td>
                       <td>{{ user['dep'] }}</td>
-                      <td>{{ user['salaire'] }}</td>
-                      <td><input name="Modifier" type="submit" value="Modifier" class="btn btn-primary" style="width:100%"/></td>
+                      <td>{{ user['salary'] }}</td>
+                      <td><input name="Edit" type="submit" value="Edit" class="btn btn-primary" style="width:100%"/></td>
                   </tr>
               </form>
               {% endfor %}

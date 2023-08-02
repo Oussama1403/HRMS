@@ -20,6 +20,6 @@ def home():
     dep = current_user.dep_name
     address = current_user.address
     user = Matricules.query.filter_by(matricule=matricule).first()
-    is_admin = 'Administrateur' if user.is_admin == 1 else 'Employé'
+    is_admin = 'Administrator' if user.is_admin == 1 else 'Employee'
     return render_template('home/home.html',matricule=matricule,fullname=fullname,email=email,phone=phone,address=address,dep = dep,role=is_admin)
 

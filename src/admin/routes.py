@@ -1,14 +1,13 @@
 from flask import flash,request,render_template,url_for,redirect
-from flask_login import login_user,logout_user,login_required,current_user
-from src.app import app,db
+from flask_login import login_required
+from src.app import db
 from src.models import *
 from .modules import *
 from . import admin
-#from src.home import home
 
-@admin.route("/gere_conge",methods=['POST','GET'])
+@admin.route("/manage_leave",methods=['POST','GET'])
 @login_required
-def gere_conge():
+def manage_leave():
     result = AdminOnly()
     if result == False:
         return redirect(url_for('home.home'))
@@ -16,57 +15,57 @@ def gere_conge():
         
         matricule=request.form["matricule"]
         conge = demande_conge.query.filter_by(matricule=matricule).first()
-        if request.form['submit_b'] == "Accepter":
+        if request.form['submit_b'] == "Accept":
             conge.status = 1
-            flash("Congé est accepté")        
-        if request.form['submit_b'] == 'Refuser':
+            flash("Leave requst is accepted")        
+        if request.form['submit_b'] == 'Decline':
             conge.status = 0
-            flash("Congé est refusé")        
+            flash("Leave request is declined")        
         
         db.session.commit()
-        return redirect(url_for('admin.gere_conge'))
+        return redirect(url_for('admin.manage_leave'))
     
     else:          
         
         fullname,role = fullname_role() # fix: store this in the session instance.
         result = demande_conge.query.all()
         print(result)
-        list_conge = []
-        for conge in result:
-            list_conge.append({'matricule':conge.matricule,'nom':User.query.filter_by(matricule=conge.matricule).first().first_name,'type':conge.type_conge,'date_deb':conge.date_deb,'date_fin':conge.date_fin,'motif':conge.motif})
-        return render_template('admin/gere_conge.html',fullname = fullname,role=role,list_conge=list_conge)
+        leave_list = []
+        for leave in result:
+            leave_list.append({'matricule':leave.matricule,'firstname':User.query.filter_by(matricule=leave.matricule).first().first_name,'type':leave.type_conge,'start_date':leave.date_deb,'end_date':leave.date_fin,'reason':leave.motif})
+        return render_template('admin/manage_leave.html',fullname = fullname,role=role,leave_list=leave_list)
 
-@admin.route("/gere_avance",methods=['POST','GET'])
+@admin.route("/manage_advances",methods=['POST','GET'])
 @login_required
-def gere_avance():
+def manage_advances():
     result = AdminOnly()
     if result == False:
         return redirect(url_for('home.home'))
     if request.method == 'POST':
         
         matricule=request.form["matricule"]
-        avance = avance_salaire.query.filter_by(matricule=matricule).first()
-        if request.form['submit_b'] == "Accepter":
-            avance.status = 1
-            flash("Avance est accepté")        
-        if request.form['submit_b'] == 'Refuser':
-            avance.status = 0
-            flash("Avance est refusé")        
+        advance = avance_salaire.query.filter_by(matricule=matricule).first()
+        if request.form['submit_b'] == "Accept":
+            advance.status = 1
+            flash("Salary advance request is accepted")        
+        if request.form['submit_b'] == 'Decline':
+            advance.status = 0
+            flash("Salary advance request is declined")        
         
         db.session.commit()
-        return redirect(url_for('admin.gere_avance'))
+        return redirect(url_for('admin.manage_advances'))
     
     else:
         fullname,role = fullname_role()
         result = avance_salaire.query.all()
-        list_avance = []
-        for avance in result:
-            list_avance.append({'matricule':avance.matricule,'nom':User.query.filter_by(matricule=avance.matricule).first().first_name,'montant':avance.montant,'motif':avance.motif})
-        return render_template('admin/gere_avance.html',fullname = fullname,role=role,list_avance=list_avance)
+        advances_list = []
+        for advance in result:
+            advances_list.append({'matricule':advance.matricule,'firstname':User.query.filter_by(matricule=advance.matricule).first().first_name,'requested_amount':advance.montant,'reason':advance.motif})
+        return render_template('admin/manage_advances.html',fullname = fullname,role=role,advances_list=advances_list)
 
-@admin.route("/liste_employees",methods=['POST','GET'])
+@admin.route("/list_employees",methods=['POST','GET'])
 @login_required
-def liste_employees():
+def list_employees():
     result = AdminOnly()
     if result == False:
         return redirect(url_for('home.home'))    
@@ -76,8 +75,8 @@ def liste_employees():
     users = User.query.all()
     list_users = []
     for user in users:
-        list_users.append({"matricule":user.matricule,"firstname":user.first_name,"lastname":user.last_name,"dep":user.dep_name,"salaire":user.salaire})
-    return render_template('admin/liste_employees.html',list_users = list_users,fullname = fullname,role=role)
+        list_users.append({"matricule":user.matricule,"firstname":user.first_name,"lastname":user.last_name,"dep":user.dep_name,"salary":user.salaire})
+    return render_template('admin/list_employees.html',list_users = list_users,fullname = fullname,role=role)
 
 @admin.route("/edit_employee/<matricule>",methods=['POST','GET'])
 @login_required
@@ -87,19 +86,18 @@ def edit_employee(matricule):
         return redirect(url_for('home.home'))    
     if request.method == 'POST':
         # update user made if apply changes button is pressed or delete user if delete button if pressed.
-        if request.form['submit_b'] == "Appliquer":
+        if request.form['submit_b'] == "Apply":
             
             # get data.       
-            
             first_name = request.form["firstname"]
             last_name = request.form["lastname"]
             email = request.form["email"]
             address = request.form["address"]
             dep = request.form["dep"]
             phone = request.form["phone"]
-            salaire = request.form["salaire"]
-            # To update data, modify attributes on the model objects:
+            salary = request.form["salary"]
             
+            # To update data, modify attributes on the model objects:
             user = User.query.filter_by(matricule=matricule).first()
             user.first_name = first_name
             user.last_name = last_name
@@ -107,17 +105,18 @@ def edit_employee(matricule):
             user.address = address
             user.dep_name = dep
             user.phone = phone
-            user.salaire = salaire
+            user.salaire = salary
             db.session.commit()
+            
             flash("Account details have been saved successfully")            
             return redirect(url_for('admin.edit_employee',matricule=matricule))
-        if request.form['submit_b'] == "Supprimer":
+        if request.form['submit_b'] == "Delete":
             
             user = User.query.filter_by(matricule=matricule).first()
             db.session.delete(user)
             db.session.commit()
             flash("User account successfully deleted")
-            return redirect(url_for('admin.liste_employees'))            
+            return redirect(url_for('admin.list_employees'))            
     else:
         # request user by matricule and get fullname,email,phone,dep,adress
         # send to profile page
@@ -129,12 +128,12 @@ def edit_employee(matricule):
         phone = user.phone 
         dep = user.dep_name
         address = user.address
-        salaire = user.salaire
-        return render_template('admin/edit.html',matricule=matricule,fullname = firstname + " " + lastname,firstname=firstname,lastname=lastname,email=email,phone=phone,address=address,dep = dep,salaire=salaire)
+        salary = user.salaire
+        return render_template('admin/edit.html',matricule=matricule,fullname = firstname + " " + lastname,firstname=firstname,lastname=lastname,email=email,phone=phone,address=address,dep = dep,salary=salary)
 
-@admin.route("/liste_dep")
+@admin.route("/list_dep")
 @login_required
-def liste_dep():
+def list_dep():
     result = AdminOnly()
     if result == False:
         return redirect(url_for('home.home'))
@@ -144,4 +143,4 @@ def liste_dep():
     for dep in deps:
         dep_emp_count = len(User.query.filter_by(dep_name = dep.name).all()) 
         list_dep.append({"name":dep.name,"count":dep_emp_count})
-    return render_template('admin/liste_dep.html',list_dep = list_dep,fullname = fullname,role=role)
+    return render_template('admin/list_dep.html',list_dep = list_dep,fullname = fullname,role=role)

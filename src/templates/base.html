@@ -14,7 +14,7 @@
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
             <!-- Navbar Brand-->
-            <a class="navbar-brand ps-3" href="{{url_for('home.home')}}" style="letter-spacing: 4px;"><b>GRH-CPG</b></a>
+            <a class="navbar-brand ps-3" href="{{url_for('home.home')}}" style="letter-spacing: 4px;"><b>HRMS</b></a>
             <!-- Sidebar Toggle-->
             <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>          
             <!-- Navbar-->
@@ -22,7 +22,7 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="{{url_for('auth.logout')}}">Se déconnecter</a></li>
+                        <li><a class="dropdown-item" href="{{url_for('auth.logout')}}">Sign out</a></li>
                     </ul>
                 </li>
             </ul>
@@ -35,42 +35,42 @@
                             
                             {% if current_user.is_admin == 0: %}
 
-                                <div class="sb-sidenav-menu-heading"><b>employé</b></div>
-                                <a class="nav-link" href="{{url_for('user.conge')}}">
+                                <div class="sb-sidenav-menu-heading"><b>Employee</b></div>
+                                <a class="nav-link" href="{{url_for('user.request_leave')}}">
                                     <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                                    demande de congé
+                                    Leave request
                                 </a>
-                                <a class="nav-link" href="{{url_for('user.demande_avance')}}">
+                                <a class="nav-link" href="{{url_for('user.request_advance')}}">
                                     <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                                    demande d'avance sur salaire
+                                    Salary advance request
                                 </a>
-                                <a class="nav-link" href="{{url_for('user.suivie')}}">
+                                <a class="nav-link" href="{{url_for('user.follow_up')}}">
                                     <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                                    Suivie des demandes
+                                    Follow-up of your requests
                                 </a>
                             {% else: %}    
-                                <div class="sb-sidenav-menu-heading"><b>Administrateur</b></div>
-                                <a class="nav-link" href="{{url_for('admin.gere_conge')}}">
+                                <div class="sb-sidenav-menu-heading"><b>Administrator</b></div>
+                                <a class="nav-link" href="{{url_for('admin.manage_leave')}}">
                                     <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-                                    les demandes de congé
+                                    Leave requests
                                 </a>
-                                <a class="nav-link" href="{{url_for('admin.gere_avance')}}">
+                                <a class="nav-link" href="{{url_for('admin.manage_advances')}}">
                                     <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-                                    les demandes d'avance
+                                    Advance requests
                                 </a>
-                                <a class="nav-link" href="{{url_for('admin.liste_employees')}}">
+                                <a class="nav-link" href="{{url_for('admin.list_employees')}}">
                                     <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                                    liste des employés
+                                    List of employees
                                 </a>
-                                <a class="nav-link" href="{{url_for('admin.liste_dep')}}">
+                                <a class="nav-link" href="{{url_for('admin.list_dep')}}">
                                     <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                                    liste des départements
+                                    List of departments
                                 </a>
                             {% endif %}    
                         </div>
                     </div>
                     <div class="sb-sidenav-footer">
-                        <div class="small">connecté en tant que:</div>
+                        <div class="small">logged in as:</div>
                         {{ fullname }} - {{ role }}
                     </div>
                 </nav>

@@ -1,7 +1,7 @@
 {% extends "base.html" %}
  
   {% block title %}
-  demande de congé
+  Request leave 
   {% endblock title %}
 
 {% block content %}
@@ -25,7 +25,7 @@
             {% endfor %}
         </div>
         
-        <h1 class="mt-4">Demande de congé </h1><hr>
+        <h1 class="mt-4">Request leave</h1><hr>
 
             <!-- Apply Leave Form -->
             <div class="card pmd-card single-col-form">
@@ -34,38 +34,38 @@
                         <div class="row">
                             <div class="col-12">
                                 <div class="form-group pmd-textfield pmd-textfield-floating-label ">
-                                    <label for="leave-type">Type de congé</label>
+                                    <label for="leave-type">Leave type</label>
                                     <select name="leave-type" id="leave-type" class="form-control" title="Please select a Leave Type" required>
                                         <option></option>
-                                        <option>Congé de maladie</option>
-                                        <option>Congé occasionnel</option>
-                                        <option>Congé sans solde</option>
-                                        <option>Congé horaire</option>
+                                        <option>Sick leave</option>
+                                        <option>Casual leave</option>
+                                        <option>Unpaid leave</option>
+                                        <option>Hourly leave</option>
                                     </select><span class="pmd-textfield-focused"></span>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group pmd-textfield pmd-textfield-floating-label">
-                                    <label class="control-label" for="datepickerstart">Date de début</label>
+                                    <label class="control-label" for="datepickerstart">Start Date</label>
                                     <input type="text" class="form-control" name="date_start" placeholder="dd/mm/yy" required><span class="pmd-textfield-focused"></span>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group pmd-textfield pmd-textfield-floating-label">
-                                    <label class="control-label" for="datepickerend">Date de fin</label>
+                                    <label class="control-label" for="datepickerend">End Date</label>
                                     <input type="text" class="form-control" name="date_end" placeholder="dd/mm/yy" required><span class="pmd-textfield-focused"></span>
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="form-group pmd-textfield pmd-textfield-floating-label">
-                                    <label>Motif</label>
+                                    <label>Reason</label>
                                     <textarea class="form-control" id="reason" name="reason" required></textarea><span class="pmd-textfield-focused"></span>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="card-footer">
-                        <button type="submit" class="btn btn-primary pmd-ripple-effect pmd-btn-raised" name="applyleave" value="Apply Leave">Appliquer Congé</button>
+                        <button type="submit" class="btn btn-primary pmd-ripple-effect pmd-btn-raised" name="applyleave" value="Apply Leave">Apply Request</button>
                     </div>
                 </form>
             </div>

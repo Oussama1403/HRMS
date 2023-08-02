@@ -1,56 +1,55 @@
-from flask import flash,request,render_template,url_for,redirect,send_from_directory,abort,after_this_request,session
-from flask_login import login_user,logout_user,login_required,current_user
+from flask import request,render_template
+from flask_login import login_required,current_user
 
 
 from .modules import *
 from . import user
 
-@user.route("/conge",methods=['POST','GET'])
+@user.route("/request_leave",methods=['POST','GET'])
 @login_required
-def conge():
+def request_leave():
     if request.method == 'POST':
-        return DemandeConge()
+        return RequestLeave()
     else:
         fullname,role = fullname_role()
-        return render_template('user/demande_conge.html',fullname = fullname,role=role)
+        return render_template('user/request_leave.html',fullname = fullname,role=role)
 
-@user.route("/demande_avance",methods=['POST','GET'])
+@user.route("/request_advance",methods=['POST','GET'])
 @login_required
-def demande_avance():
+def request_advance():
     if request.method == 'POST':
-        return DemandeAvance()
+        return RequestAdvance()
     fullname,role = fullname_role()
-    return render_template('user/demande_avance.html',fullname = fullname,role=role)
+    return render_template('user/request_advance.html',fullname = fullname,role=role)
 
-@user.route('/suivie')
+@user.route('/follow_up')
 @login_required
-def suivie():
+def follow_up():
     fullname,role = fullname_role()
 
     matricule = current_user.matricule
-    conge = demande_conge.query.filter_by(matricule=matricule).first()
-    avance = avance_salaire.query.filter_by(matricule=matricule).first()
-    list_conge = {}
-    list_avance = {}
-    if conge or avance:
-        if conge:
-            if conge.status == 1: 
-                conge_status = 'Accepté'  
-            elif conge.status == 0: 
-                conge_status = 'Refusé'
+    leave = demande_conge.query.filter_by(matricule=matricule).first()
+    advance = avance_salaire.query.filter_by(matricule=matricule).first()
+    leave_list = {}
+    advance_list = {}
+    if leave or advance:
+        if leave:
+            if leave.status == 1: 
+                leave_status = 'Accepted'  
+            elif leave.status == 0: 
+                leave_status = 'Declined'
             else:
-                conge_status = 'Attente'       
-            list_conge = {'matricule':conge.matricule,'nom':User.query.filter_by(matricule=conge.matricule).first().first_name,'type':conge.type_conge,'date_deb':conge.date_deb,'date_fin':conge.date_fin,'motif':conge.motif,'status':conge_status}
-        if avance:
-            if avance.status == 1: 
-                avance_status = 'Accepté'  
-            elif avance.status == 0: 
-                avance_status = 'Refusé'
+                leave_status = 'Pending'       
+            leave_list = {'matricule':leave.matricule,'nom':User.query.filter_by(matricule=leave.matricule).first().first_name,'type':leave.type_conge,'date_deb':leave.date_deb,'date_fin':leave.date_fin,'motif':leave.motif,'status':leave_status}
+        if advance:
+            if advance.status == 1: 
+                advance_status = 'Accepted'  
+            elif advance.status == 0: 
+                advance_status = 'Declined'
             else:
-                avance_status = 'Attente'  
-            avance_status = 'Accepté' if avance.status == 1 else 'Refusé'
-            list_avance = {'matricule':avance.matricule,'nom':User.query.filter_by(matricule=avance.matricule).first().first_name,'montant':avance.montant,'motif':avance.motif,'status':avance_status}
-        return render_template('user/suivie.html',conge=list_conge,avance=list_avance,fullname = fullname,role=role)
+                advance_status = 'Pending'  
+            advance_list = {'matricule':advance.matricule,'nom':User.query.filter_by(matricule=advance.matricule).first().first_name,'montant':advance.montant,'motif':advance.motif,'status':advance_status}
+        return render_template('user/followup.html',leave=leave_list,advance=advance_list,fullname = fullname,role=role)
     else:
-       return render_template('user/suivie.html',conge=None,avance=None,fullname = fullname,role=role)
+       return render_template('user/followup.html',conge=None,avance=None,fullname = fullname,role=role)
 

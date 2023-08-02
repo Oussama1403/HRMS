@@ -5,15 +5,14 @@
 - Update the README file. (done)
 - Document the project thoroughly.
 - Reorganize the project using Flask Blueprints. (done)
-- Optimize and Organize the Codebase. (done)
+- Optimize and Organize the Codebase. (ongoing)
 - Introduce Testing.
 - Enhance Security Measures.
-- Translate UI from French to English. (ongoing)
-- Migrate to MySQL Database.
+- Translate UI from French to English. (ongoing) / Implement Translation.
 - Migrate to Tailwind CSS for improved styling.
 - Separate Employee Dashboard and Admin Dashboard functionality. (done)
 - Update CHANGELOG and Release the first stable and complete version.
-- BUG: Resolve issue where deleting an employee does not delete their leave application, causing an error.
+- BUG: Resolve issue where deleting an employee does not delete their leave application, causing an error. (ongoing)
 - Ensure that every change properly updates all related database tables to maintain data integrity.
 - Address and fix various existing bugs.
 - Add Schema migrations

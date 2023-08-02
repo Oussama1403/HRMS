@@ -1,7 +1,7 @@
 {% extends "base.html" %}
  
   {% block title %}
-    les demandes d'avance sur salaire
+   Salary advance requests
   {% endblock title %}
 
 {% block content %}
@@ -17,35 +17,35 @@
   </div>
   {% endfor %}
  </div>
-<h1 class="mt-4">Les demandes d'avance sur salaire</h1><hr>
+<h1 class="mt-4">Salary advance requests</h1><hr>
 
 <div class="card mb-4">
     <div class="card-header">
         <i class="fas fa-table me-1"></i>
-        liste des avances
-    </div>
+        Salary Advance requests list
+      </div>
     <div class="card-body">
         <table class="table table-striped">
             <thead>
               <tr>
                 <th scope="col">Matricule</th>
-                <th scope="col">Nom</th>
-                <th scope="col">Motant demandé</th>
-                <th scope="col">Motif</th>
+                <th scope="col">Name</th>
+                <th scope="col">Requested amount</th>
+                <th scope="col">Reason</th>
                 <th scope="col"></th>
 
               </tr>
             </thead>
             <tbody>
-                {% for avance in list_avance %}
+                {% for advance in advances_list %}
                 <form action="#" method="POST">
                  <tr>
-                   <th scope="row"><input type="hidden" name="matricule" value="{{ avance['matricule'] }}"/>{{ avance['matricule'] }}</th>
-                   <td>{{ avance['nom'] }}</td>
-                   <td>{{ avance['montant'] }}</td>
-                   <td>{{ avance['motif'] }}</td>
-                   <td><input type="submit" name="submit_b" value="Accepter" class="btn btn-success" style="width:100%"/></td>
-                   <td><input type="submit" name="submit_b" value="Refuser"  class="btn btn-danger" style="width:100%"/></td>
+                   <th scope="row"><input type="hidden" name="matricule" value="{{ advance['matricule'] }}"/>{{ advance['matricule'] }}</th>
+                   <td>{{ advance['firstname'] }}</td>
+                   <td>{{ advance['requested_amount'] }}</td>
+                   <td>{{ advance['reason'] }}</td>
+                   <td><input type="submit" name="submit_b" value="Accept" class="btn btn-success" style="width:100%"/></td>
+                   <td><input type="submit" name="submit_b" value="Decline"  class="btn btn-danger" style="width:100%"/></td>
                  </tr>
                 </form>
               {% endfor %}

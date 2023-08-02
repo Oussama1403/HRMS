@@ -1,1 +1,3 @@
 myenv/
+# ignore __pycache__ dir
+src/__pycache__

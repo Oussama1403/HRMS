@@ -9,7 +9,7 @@ def LoginAccount():
     password = request.form["password"]
     user = User.query.filter_by(matricule=matricule).first()
     if not user or user.password != password:
-        flash('Veuillez vérifier vos informations et réessayer.')
+        flash('Please verify your information and try again.')
         return render_template('auth/login.html')
     
     login_user(user,False)
@@ -27,7 +27,7 @@ def RegisterAccount():
     # check for valid matricule
     row = Matricules.query.filter_by(matricule=matricule).first()
     if not row:
-        flash("matricule invalid")
+        flash("invalid matricule")
         return render_template("auth/register.html")
     
     # check if already registred

@@ -49,14 +49,14 @@
                                             <div class="row mb-3">
                                                 <div class="col-md-6">
                                                     <div class="form-floating mb-3 mb-md-0">
-                                                        <input class="form-control" name="inputFirstName" type="text" placeholder="Entrez votre prénom" required/>
-                                                        <label for="inputFirstName">Prénom</label>
+                                                        <input class="form-control" name="inputFirstName" type="text" placeholder="Enter your first name" required/>
+                                                        <label for="inputFirstName">First name</label>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-floating">
-                                                        <input class="form-control" name="inputLastName" type="text" placeholder="Entrez votre nom" required/>
-                                                        <label for="inputLastName">Nom</label>
+                                                        <input class="form-control" name="inputLastName" type="text" placeholder="Enter your last name" required/>
+                                                        <label for="inputLastName">Last name</label>
                                                     </div>
                                                 </div>
                                             </div>  
@@ -65,35 +65,36 @@
                                                 <label for="inputEmail">Email address</label>
                                             </div>
                                             <div class="form-floating mb-3">
-                                                <input class="form-control" name="phone" type="phone" placeholder="Numéro du Téléphone" required/>
-                                                <label for="phone">Numéro du Téléphone</label>
+                                                <input class="form-control" name="phone" type="phone" placeholder="Phone Number" required/>
+                                                <label for="phone">Phone Number</label>
                                             </div>
                                             <div class="form-floating mb-3">
                                                 <input class="form-control" name="inputPassword" type="password" placeholder="Create a password" required/>
-                                                    <label for="inputPassword">Mot de passe</label>
+                                                    <label for="inputPassword">Password</label>
                                             </div>
                                             <div class="form-floating mb-3">
                                                 <input class="form-control" name="address" type="text" placeholder="Address" required/>
                                                     <label for="address">Address</label>
                                             </div>
                                             <div class="form-group pmd-textfield pmd-textfield-floating-label ">
-                                                <label for="dep">Choisir le département</label>
-                                                <select name="dep" id="dep" class="form-control" title="Département" required>
+                                                <label for="dep">Choose your department</label>
+                                                <!-- update dp's name in the db -->
+                                                <select name="dep" id="dep" class="form-control" title="Department" required>
                                                     <option></option>
                                                     <option>Production</option>
-                                                    <option>Informatique</option>
-                                                    <option>Gestion</option>
+                                                    <option>IT</option>
+                                                    <option>Management</option>
                                                     <option>Marketing</option>
-                                                    <option>Vente</option>
+                                                    <option>Sales</option>
                                                 </select><span class="pmd-textfield-focused"></span>
                                             </div>
                                             <div class="mt-4 mb-0">
-                                                <div class="d-grid"><input name="create_account" type="submit" value="Créer un compte" class="btn btn-primary btn-block" ></div>
+                                                <div class="d-grid"><input name="create_account" type="submit" value="Create Account" class="btn btn-primary btn-block" ></div>
                                             </div>
                                         </form>
                                     </div>
                                     <div class="card-footer text-center py-3">
-                                        <div class="small"><a href="{{url_for('auth.login')}}">Avoir un compte? Aller à la connexion</a></div>
+                                        <div class="small"><a href="{{url_for('auth.login')}}">Have an account? Go to login</a></div>
                                     </div>
                                 </div>
                             </div>

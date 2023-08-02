@@ -1,7 +1,7 @@
 {% extends "base.html" %}
  
   {% block title %}
-     les demandes de congé
+   Leave requests
   {% endblock title %}
 
 {% block content %}
@@ -17,38 +17,38 @@
   </div>
   {% endfor %}
  </div>
-<h1 class="mt-4">Les demandes de congé</h1><hr>
+<h1 class="mt-4">leave requests</h1><hr>
 
 <div class="card mb-4">
     <div class="card-header">
         <i class="fas fa-table me-1"></i>
-        liste des congés
+        Leave requests list
     </div>
     <div class="card-body">
         <table class="table table-striped">
             <thead>
               <tr>
                 <th scope="col">Matricule</th>
-                <th scope="col">Nom</th>
-                <th scope="col">Date de début</th>
-                <th scope="col">Date de fin</th>
-                <th scope="col">Type de congé</th>
-                <th scope="col">Raison</th>
+                <th scope="col">Name</th>
+                <th scope="col">Start date</th>
+                <th scope="col">End date</th>
+                <th scope="col">Leave type</th>
+                <th scope="col">Reason</th>
                 <th scope="col"></th>
               </tr>
             </thead>
             <tbody>
-              {% for conge in list_conge %}
+              {% for leave in leave_list %}
               <form action="#" method="POST">
                 <tr>
-                  <th scope="row"><input type="hidden" name="matricule" value="{{ conge['matricule'] }}"/>{{ conge['matricule'] }}</th>
-                  <td>{{ conge['nom'] }}</td>
-                  <td>{{ conge['date_deb'] }}</td>
-                  <td>{{ conge['date_fin'] }}</td>
-                  <td>{{ conge['type'] }}</td>
-                  <td>{{ conge['motif'] }}</td>
-                  <td><input type="submit" name="submit_b" value="Accepter" class="btn btn-success" style="width:100%"/></td>
-                  <td><input type="submit" name="submit_b" value="Refuser"  class="btn btn-danger" style="width:100%"/></td>
+                  <th scope="row"><input type="hidden" name="matricule" value="{{ leave['matricule'] }}"/>{{ leave['matricule'] }}</th>
+                  <td>{{ leave['firstname'] }}</td>
+                  <td>{{ leave['start_date'] }}</td>
+                  <td>{{ leave['end_date'] }}</td>
+                  <td>{{ leave['type'] }}</td>
+                  <td>{{ leave['reason'] }}</td>
+                  <td><input type="submit" name="submit_b" value="Accept" class="btn btn-success" style="width:100%"/></td>
+                  <td><input type="submit" name="submit_b" value="Decline"  class="btn btn-danger" style="width:100%"/></td>
 
                 </tr>
               </form>

@@ -1,7 +1,7 @@
 {% extends "base.html" %}
  
   {% block title %}
-  demande d'avance sur salaire 
+  Request for a salary advance
   {% endblock title %}
 
 {% block content %}
@@ -18,7 +18,7 @@
             </div>
             {% endfor %}
         </div>
-            <h1 class="mt-4">Demande d'avance sur salaire </h1><hr>
+            <h1 class="mt-4">Request for a salary advance</h1><hr>
 
             <div class="card pmd-card single-col-form">
                 <form id="apply-leave" method="post" action="">
@@ -26,20 +26,20 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group pmd-textfield pmd-textfield-floating-label">
-                                    <label class="control-label" for="montant">Motant demandé</label>
-                                    <input type="number" class="form-control" id="montant" name="montant" required><span class="pmd-textfield-focused"></span>
+                                    <label class="control-label" for="montant">Amount requested</label>
+                                    <input type="number" class="form-control" id="requested_amount" name="requested_amount" required><span class="pmd-textfield-focused"></span>
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="form-group pmd-textfield pmd-textfield-floating-label">
-                                    <label>Motif</label>
+                                    <label>Reason</label>
                                     <textarea class="form-control" id="reason" name="reason" required></textarea><span class="pmd-textfield-focused"></span>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="card-footer">
-                        <button type="submit" class="btn btn-primary pmd-ripple-effect pmd-btn-raised" name="applyleave" value="Apply Leave">Appliquer</button>
+                        <button type="submit" class="btn btn-primary pmd-ripple-effect pmd-btn-raised" name="applyleave" value="Apply Leave">Apply</button>
                     </div>
                 </form>
             </div>

@@ -13,7 +13,7 @@
             <div id="layoutSidenav_content">
 
                 <div class="container-fluid px-4">
-                    <h1 class="mt-4">Modifier un Employé</h1>
+                    <h1 class="mt-4">Edit employee's information</h1>
                 </div>
                 <hr>
                 <!-- error message used by flask -->
@@ -37,7 +37,7 @@
                               <p class="text-muted mb-1">{{ dep }}</p>
                               <p class="text-muted mb-4">{{ address }}</p>
                               <div class="d-flex justify-content-center mb-2">
-                                <a href="mailto: {{ email }}" target="_blank" class="btn btn-primary">Contacter</a>
+                                <a href="mailto: {{ email }}" target="_blank" class="btn btn-primary">Contact</a>
                               </div>
                             </div>
                           </div>
@@ -47,7 +47,7 @@
                             <div class="card-body">
                               <div class="row">
                                 <div class="col-sm-3">
-                                  <p class="mb-0">Prénom</p>
+                                  <p class="mb-0">First Name</p>
                                 </div>
                                 <div class="col-sm-9">
                                   <input type="text" value="{{ firstname }}" name="firstname">
@@ -56,7 +56,7 @@
                               <hr>
                               <div class="row">
                                 <div class="col-sm-3">
-                                  <p class="mb-0">Nom</p>
+                                  <p class="mb-0">Last Name</p>
                                 </div>
                                 <div class="col-sm-9">
                                   <input type="text" value="{{ lastname }}" name="lastname">
@@ -74,7 +74,7 @@
                               <hr>
                               <div class="row">
                                 <div class="col-sm-3">
-                                  <p class="mb-0">Téléphone</p>
+                                  <p class="mb-0">Phone Number</p>
                                 </div>
                                 <div class="col-sm-9">
                                   <input type="text" value="{{ phone }}" name="phone"/>
@@ -83,7 +83,7 @@
                               <hr>
                               <div class="row">
                                 <div class="col-sm-3">
-                                  <p class="mb-0">Département</p>
+                                  <p class="mb-0">Department</p>
                                 </div>
                                 <div class="col-sm-9">
                                   <input type="text" value="{{ dep }}" name="dep"/>                               </div>
@@ -91,7 +91,7 @@
                               <hr>
                               <div class="row">
                                 <div class="col-sm-3">
-                                  <p class="mb-0">Adress</p>
+                                  <p class="mb-0">Address</p>
                                 </div>
                                 <div class="col-sm-9">
                                   <input type="text" value="{{ address }}" name="address"/>
@@ -100,18 +100,18 @@
                               <hr>
                               <div class="row">
                                 <div class="col-sm-3">
-                                  <p class="mb-0">Salaire</p>
+                                  <p class="mb-0">Salary</p>
                                 </div>
                                 <div class="col-sm-9">
-                                  <input type="text" value="{{ salaire }}" name="salaire"/>
+                                  <input type="text" value="{{ salary }}" name="salary"/>
                                 </div>
                               </div>
                             </div>
                           </div>
                         </div>
                         <div class="d-flex justify-content-center">
-                          <input type="submit" name="submit_b" value="Appliquer" class="btn btn-primary" />
-                          <input type="submit" name="submit_b" value="Supprimer" class="btn btn-danger" />
+                          <input type="submit" name="submit_b" value="Apply" class="btn btn-primary" />
+                          <input type="submit" name="submit_b" value="Delete" class="btn btn-danger" />
                         </div>                      
                       </form>  
                       </div>

@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+ 
+  {% block title %}
+  Request follow-up 
+  {% endblock title %}
+
+{% block content %}
+<div id="layoutSidenav_content">
+    <main>
+        <div class="container-fluid px-4">
+<h1 class="mt-4">Your leave requests</h1><hr>
+<div class="card mb-4">
+    <div class="card-header">
+        <i class="fas fa-table me-1"></i>
+        leave requests list
+    </div>
+    <div class="card-body">
+        <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">Matricule</th>
+                <th scope="col">Name</th>
+                <th scope="col">Start date</th>
+                <th scope="col">End date</th>
+                <th scope="col">Leave type</th>
+                <th scope="col">Reason</th>
+                <th scope="col">Status</th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody>
+                <tr>
+                  <th scope="row">{{ leave['matricule'] }}</th>
+                  <td>{{ leave['nom'] }}</td>
+                  <td>{{ leave['date_deb'] }}</td>
+                  <td>{{ leave['date_fin'] }}</td>
+                  <td>{{ leave['type'] }}</td>
+                  <td>{{ leave['motif'] }}</td>
+                  
+                  {% if leave['status'] == 'Accepted': %}
+                     <td class="text-success">{{ leave['status'] }}</td>
+                  {% elif leave['status'] == 'Declined': %}
+                     <td class="text-danger">{{ leave['status'] }}</td>
+                  {% else :%}
+                    <td class=".text-primary">{{ leave['status'] }}</td>
+                  {% endif %}  
+
+                </tr>
+            
+            </tbody>
+          </table>
+    </div>
+</div>  
+    <h1 class="mt-4">Your salary advance requests</h1><hr>
+
+    <div class="card mb-4">
+        <div class="card-header">
+            <i class="fas fa-table me-1"></i>
+            Salary Advance requests list
+        </div>
+        <div class="card-body">
+            <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th scope="col">Matricule</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Requested amount</th>
+                    <th scope="col">Reason</th>
+                    <th scope="col">Status</th>
+                    <th scope="col"></th>
+    
+                  </tr>
+                </thead>
+                <tbody>
+                     <tr>
+                       <th scope="row">{{ advance['matricule'] }}</th>
+                       <td>{{ advance['nom'] }}</td>
+                       <td>{{ advance['montant'] }}</td>
+                       <td>{{ advance['motif'] }}</td>
+                       
+                       {% if advance['status'] == 'Accepted': %}
+                          <td class="text-success">{{ advance['status'] }}</td>
+                       {% elif advance['status'] == 'Declined': %}
+                          <td class="text-danger">{{ advance['status'] }}</td>
+                       {% else :%}
+                          <td class=".text-primary">{{ advance['status'] }}</td>
+                       {% endif %}  
+                    
+                     </tr>
+                </tbody>
+              </table>
+        </div>  
+</div>
+</div>
+</main>
+
+{% endblock content %}
