@@ -9,7 +9,6 @@
 - Introduce Testing.
 - Enhance Security Measures.
 - Translate UI from French to English. (ongoing) / Implement Translation.
-- Migrate to Tailwind CSS for improved styling.
 - Separate Employee Dashboard and Admin Dashboard functionality. (done)
 - Update CHANGELOG and Release the first stable and complete version.
 - BUG: Resolve issue where deleting an employee does not delete their leave application, causing an error. (ongoing)
