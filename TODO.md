@@ -16,4 +16,4 @@
 - Address and fix various existing bugs.
 - Add Schema migrations
 - Remove Matricule DB Table.
-- Add an Admin Register and Login Seperate from Employee Register/Login Pages.
+- Add an Admin Register and Login Pages Seperate from Employee Register/Login Pages.
