@@ -17,3 +17,5 @@
 - Add Schema migrations
 - Remove Matricule DB Table.
 - Add an Admin Register and Login Pages Seperate from Employee Register/Login Pages.
+- Update UI.
+- Add DB Entity-Relationship Diagram.
