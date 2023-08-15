@@ -15,3 +15,5 @@
 - Ensure that every change properly updates all related database tables to maintain data integrity.
 - Address and fix various existing bugs.
 - Add Schema migrations
+- Remove Matricule DB Table.
+- Add an Admin Register and Login Seperate from Employee Register/Login Pages.
