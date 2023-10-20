@@ -1,21 +1,21 @@
 ## TODO
-- Improve Exception Handling. (ongoing)
-- Implement Form Validation.
-- Create Password Recovery Functionality.
-- Update the README file. (done)
-- Document the project thoroughly.
-- Reorganize the project using Flask Blueprints. (done)
-- Optimize and Organize the Codebase. (ongoing)
-- Introduce Testing.
-- Enhance Security Measures.
-- Translate UI from French to English. (ongoing) / Implement Translation.
-- Separate Employee Dashboard and Admin Dashboard functionality. (done)
-- Update CHANGELOG and Release the first stable and complete version.
-- BUG: Resolve issue where deleting an employee does not delete their leave application, causing an error. (ongoing)
-- Ensure that every change properly updates all related database tables to maintain data integrity.
-- Address and fix various existing bugs.
-- Add Schema migrations
-- Remove Matricule DB Table.
-- Add an Admin Register and Login Pages Seperate from Employee Register/Login Pages.
-- Update UI.
-- Add DB Entity-Relationship Diagram.
+- [ ] Improve Exception Handling. (ongoing)
+- [ ] Implement Form Validation.
+- [ ] Create Password Recovery Functionality.
+- [ ] Update the README file. (done)
+- [ ] Document the project thoroughly.
+- [ ] Reorganize the project using Flask Blueprints. (done)
+- [ ] Optimize and Organize the Codebase. (ongoing)
+- [ ] Introduce Testing.
+- [ ] Enhance Security Measures.
+- [ ] Translate UI from French to English. (ongoing) / Implement Translation.
+- [ ] Separate Employee Dashboard and Admin Dashboard functionality. (done)
+- [ ] Update CHANGELOG and Release the first stable and complete version.
+- [ ] BUG: Resolve issue where deleting an employee does not delete their leave application, causing an error. (ongoing)
+- [ ] Ensure that every change properly updates all related database tables to maintain data integrity.
+- [ ] Address and fix various existing bugs.
+- [ ] Add Schema migrations
+- [ ] Remove Matricule DB Table.
+- [ ] Add an Admin Register and Login Pages Seperate from Employee Register/Login Pages.
+- [ ] Update UI.
+- [ ] Add DB Entity-Relationship Diagram.
