@@ -1,3 +1,3 @@
-myenv/
+venv/
 # ignore __pycache__ dir
-src/__pycache__
+__pycache__
