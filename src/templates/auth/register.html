@@ -41,8 +41,8 @@
                                             <div class="row mb-3">
                                                 <div class="form-floating mb-3">
                                                     <div class="form-floating mb-3 mb-md-0">
-                                                        <input class="form-control" name="matricule" type="number" placeholder="Tapez votre matricule" required/>
-                                                        <label for="inputFirstName">Matricule</label>
+                                                        <input class="form-control" name="employee_id" type="number" placeholder="Employee Id" required/>
+                                                        <label for="employee_id">Employee Id</label>
                                                     </div>
                                                 </div>
                                             </div>   
@@ -75,6 +75,14 @@
                                             <div class="form-floating mb-3">
                                                 <input class="form-control" name="address" type="text" placeholder="Address" required/>
                                                     <label for="address">Address</label>
+                                            </div>
+                                            <div class="form-group pmd-textfield pmd-textfield-floating-label ">
+                                                <label for="is_admin">Admin</label>
+                                                <select name="is_admin" id="is_admin" class="form-control" title="Admin" required>
+                                                    <option></option>
+                                                    <option>Yes</option>
+                                                    <option>No</option>
+                                                </select><span class="pmd-textfield-focused"></span>
                                             </div>
                                             <div class="form-group pmd-textfield pmd-textfield-floating-label ">
                                                 <label for="dep">Choose your department</label>

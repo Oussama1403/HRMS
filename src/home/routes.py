@@ -13,13 +13,12 @@ def base():
 @login_required
 def home():
     """Handle all incoming post/get requests"""
-    matricule = current_user.matricule
+    employee_id = current_user.employee_id
     fullname = current_user.first_name + " " + current_user.last_name
     email = current_user.email
     phone = current_user.phone 
     dep = current_user.dep_name
     address = current_user.address
-    user = Matricules.query.filter_by(matricule=matricule).first()
-    is_admin = 'Administrator' if user.is_admin == 1 else 'Employee'
-    return render_template('home/home.html',matricule=matricule,fullname=fullname,email=email,phone=phone,address=address,dep = dep,role=is_admin)
+    is_admin = 'Administrator' if current_user.is_admin == True else 'Employee'
+    return render_template('home/home.html',employee_id=employee_id,fullname=fullname,email=email,phone=phone,address=address,dep = dep,role=is_admin)
 
