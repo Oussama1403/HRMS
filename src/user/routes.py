@@ -27,9 +27,9 @@ def request_advance():
 def follow_up():
     fullname,role = fullname_role()
 
-    matricule = current_user.matricule
-    leave = demande_conge.query.filter_by(matricule=matricule).first()
-    advance = avance_salaire.query.filter_by(matricule=matricule).first()
+    employee_id = current_user.employee_id
+    leave = demande_conge.query.filter_by(employee_id=employee_id).first()
+    advance = avance_salaire.query.filter_by(employee_id=employee_id).first()
     leave_list = {}
     advance_list = {}
     if leave or advance:
@@ -40,7 +40,7 @@ def follow_up():
                 leave_status = 'Declined'
             else:
                 leave_status = 'Pending'       
-            leave_list = {'matricule':leave.matricule,'nom':User.query.filter_by(matricule=leave.matricule).first().first_name,'type':leave.type_conge,'date_deb':leave.date_deb,'date_fin':leave.date_fin,'motif':leave.motif,'status':leave_status}
+            leave_list = {'employee_id':leave.employee_id,'nom':User.query.filter_by(employee_id=leave.employee_id).first().first_name,'type':leave.type_conge,'date_deb':leave.date_deb,'date_fin':leave.date_fin,'motif':leave.motif,'status':leave_status}
         if advance:
             if advance.status == 1: 
                 advance_status = 'Accepted'  
@@ -48,7 +48,7 @@ def follow_up():
                 advance_status = 'Declined'
             else:
                 advance_status = 'Pending'  
-            advance_list = {'matricule':advance.matricule,'nom':User.query.filter_by(matricule=advance.matricule).first().first_name,'montant':advance.montant,'motif':advance.motif,'status':advance_status}
+            advance_list = {'employee_id':advance.employee_id,'nom':User.query.filter_by(employee_id=advance.employee_id).first().first_name,'montant':advance.montant,'motif':advance.motif,'status':advance_status}
         return render_template('user/followup.html',leave=leave_list,advance=advance_list,fullname = fullname,role=role)
     else:
        return render_template('user/followup.html',conge=None,avance=None,fullname = fullname,role=role)

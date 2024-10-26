@@ -28,7 +28,7 @@
         <table class="table table-striped">
             <thead>
               <tr>
-                <th scope="col">Matricule</th>
+                <th scope="col">Employee Id</th>
                 <th scope="col">Name</th>
                 <th scope="col">Requested amount</th>
                 <th scope="col">Reason</th>
@@ -40,7 +40,7 @@
                 {% for advance in advances_list %}
                 <form action="#" method="POST">
                  <tr>
-                   <th scope="row"><input type="hidden" name="matricule" value="{{ advance['matricule'] }}"/>{{ advance['matricule'] }}</th>
+                   <th scope="row"><input type="hidden" name="employee_id" value="{{ advance['employee_id'] }}"/>{{ advance['employee_id'] }}</th>
                    <td>{{ advance['firstname'] }}</td>
                    <td>{{ advance['requested_amount'] }}</td>
                    <td>{{ advance['reason'] }}</td>

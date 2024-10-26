@@ -28,7 +28,7 @@
         <table class="table table-striped">
             <thead>
               <tr>
-                <th scope="col">Matricule</th>
+                <th scope="col">Employee Id</th>
                 <th scope="col">Name</th>
                 <th scope="col">Start date</th>
                 <th scope="col">End date</th>
@@ -41,7 +41,7 @@
               {% for leave in leave_list %}
               <form action="#" method="POST">
                 <tr>
-                  <th scope="row"><input type="hidden" name="matricule" value="{{ leave['matricule'] }}"/>{{ leave['matricule'] }}</th>
+                  <th scope="row"><input type="hidden" name="employee_id" value="{{ leave['employee_id'] }}"/>{{ leave['employee_id'] }}</th>
                   <td>{{ leave['firstname'] }}</td>
                   <td>{{ leave['start_date'] }}</td>
                   <td>{{ leave['end_date'] }}</td>

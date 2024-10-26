@@ -27,7 +27,7 @@
         <table class="table table-striped">
             <thead>
               <tr>
-                <th scope="col">Matricule</th>
+                <th scope="col">Employee Id</th>
                 <th scope="col">First name</th>
                 <th scope="col">Name</th>
                 <th scope="col">Department</th>
@@ -39,7 +39,7 @@
               {% for user in list_users %}
               <form action="#" method="POST">
                   <tr>
-                      <td><input type="hidden" name="matricule" value="{{ user['matricule'] }}"/>{{ user['matricule'] }}</td>
+                      <td><input type="hidden" name="employee_idb" value="{{ user['employee_id'] }}"/>{{ user['employee_id'] }}</td>
                       <td>{{ user['firstname'] }}</td>
                       <td>{{ user['lastname'] }}</td>
                       <td>{{ user['dep'] }}</td>

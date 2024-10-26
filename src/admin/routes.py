@@ -13,8 +13,8 @@ def manage_leave():
         return redirect(url_for('home.home'))
     if request.method == 'POST':
         
-        matricule=request.form["matricule"]
-        conge = demande_conge.query.filter_by(matricule=matricule).first()
+        employee_id = request.form["employee_id"]
+        conge = demande_conge.query.filter_by(employee_id=employee_id).first()
         if request.form['submit_b'] == "Accept":
             conge.status = 1
             flash("Leave requst is accepted")        
@@ -32,7 +32,7 @@ def manage_leave():
         print(result)
         leave_list = []
         for leave in result:
-            leave_list.append({'matricule':leave.matricule,'firstname':User.query.filter_by(matricule=leave.matricule).first().first_name,'type':leave.type_conge,'start_date':leave.date_deb,'end_date':leave.date_fin,'reason':leave.motif})
+            leave_list.append({'employee_id':leave.employee_id,'firstname':User.query.filter_by(employee_id=leave.employee_id).first().first_name,'type':leave.type_conge,'start_date':leave.date_deb,'end_date':leave.date_fin,'reason':leave.motif})
         return render_template('admin/manage_leave.html',fullname = fullname,role=role,leave_list=leave_list)
 
 @admin.route("/manage_advances",methods=['POST','GET'])
@@ -43,8 +43,8 @@ def manage_advances():
         return redirect(url_for('home.home'))
     if request.method == 'POST':
         
-        matricule=request.form["matricule"]
-        advance = avance_salaire.query.filter_by(matricule=matricule).first()
+        employee_id=request.form["employee_id"]
+        advance = avance_salaire.query.filter_by(employee_id=employee_id).first()
         if request.form['submit_b'] == "Accept":
             advance.status = 1
             flash("Salary advance request is accepted")        
@@ -60,7 +60,7 @@ def manage_advances():
         result = avance_salaire.query.all()
         advances_list = []
         for advance in result:
-            advances_list.append({'matricule':advance.matricule,'firstname':User.query.filter_by(matricule=advance.matricule).first().first_name,'requested_amount':advance.montant,'reason':advance.motif})
+            advances_list.append({'employee_id':advance.employee_id,'firstname':User.query.filter_by(employee_id=advance.employee_id).first().first_name,'requested_amount':advance.montant,'reason':advance.motif})
         return render_template('admin/manage_advances.html',fullname = fullname,role=role,advances_list=advances_list)
 
 @admin.route("/list_employees",methods=['POST','GET'])
@@ -70,12 +70,12 @@ def list_employees():
     if result == False:
         return redirect(url_for('home.home'))    
     if request.method == 'POST':
-        return redirect(url_for('admin.edit_employee',matricule=request.form["matricule"]))
+        return redirect(url_for('admin.edit_employee',employee_id=request.form["employee_id"]))
     fullname,role = fullname_role()
     users = User.query.all()
     list_users = []
     for user in users:
-        list_users.append({"matricule":user.matricule,"firstname":user.first_name,"lastname":user.last_name,"dep":user.dep_name,"salary":user.salaire})
+        list_users.append({"employee_id":user.employee_id,"firstname":user.first_name,"lastname":user.last_name,"dep":user.dep_name,"salary":user.salaire})
     return render_template('admin/list_employees.html',list_users = list_users,fullname = fullname,role=role)
 
 @admin.route("/edit_employee/<matricule>",methods=['POST','GET'])

@@ -18,7 +18,7 @@
         <table class="table table-striped">
             <thead>
               <tr>
-                <th scope="col">Matricule</th>
+                <th scope="col">Employee Id</th>
                 <th scope="col">Name</th>
                 <th scope="col">Start date</th>
                 <th scope="col">End date</th>
@@ -30,7 +30,7 @@
             </thead>
             <tbody>
                 <tr>
-                  <th scope="row">{{ leave['matricule'] }}</th>
+                  <th scope="row">{{ leave['employee_id'] }}</th>
                   <td>{{ leave['nom'] }}</td>
                   <td>{{ leave['date_deb'] }}</td>
                   <td>{{ leave['date_fin'] }}</td>
@@ -62,7 +62,7 @@
             <table class="table table-striped">
                 <thead>
                   <tr>
-                    <th scope="col">Matricule</th>
+                    <th scope="col">Employee Id</th>
                     <th scope="col">Name</th>
                     <th scope="col">Requested amount</th>
                     <th scope="col">Reason</th>
@@ -73,7 +73,7 @@
                 </thead>
                 <tbody>
                      <tr>
-                       <th scope="row">{{ advance['matricule'] }}</th>
+                       <th scope="row">{{ advance['employee_id'] }}</th>
                        <td>{{ advance['nom'] }}</td>
                        <td>{{ advance['montant'] }}</td>
                        <td>{{ advance['motif'] }}</td>
