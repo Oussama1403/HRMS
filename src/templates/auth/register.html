@@ -13,28 +13,23 @@
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>  
     </head>
     <body class="bg-primary">
-        
-       
-
         <div id="layoutAuthentication">
             <div id="layoutAuthentication_content">
                 <main>
                     <div class="container">
-                    
-                    <div class="row justify-content-center">
+                        <div class="row justify-content-center">
                             <div class="col-lg-7">
                                 <div class="card shadow-lg border-0 rounded-lg mt-5">
                                     <div class="card-header"><h3 class="text-center font-weight-light my-4">Create Account</h3></div>
                                     
                                     <!-- error message used by flask -->
-                                      <div class="container">
-                                       {% for message in get_flashed_messages() %}
-                                       <div class="alert alert-warning" role="alert">
-                                          <!--<button type="button" class="close" data-dismiss="alert">&times;</button>-->
-                                          <div style="text-align:center">{{ message }}</div>
-                                       </div>
-                                       {% endfor %}
-                                      </div>
+                                    <div class="container">
+                                        {% for message in get_flashed_messages() %}
+                                        <div class="alert alert-warning" role="alert">
+                                            <div style="text-align:center">{{ message }}</div>
+                                        </div>
+                                        {% endfor %}
+                                    </div>
                                     
                                     <div class="card-body">
                                         <form id="form" action="#" method="POST">
@@ -59,7 +54,25 @@
                                                         <label for="inputLastName">Last name</label>
                                                     </div>
                                                 </div>
-                                            </div>  
+                                            </div>
+                                            <div class="row mb-3">
+                                                <div class="col-md-6">
+                                                    <div class="form-floating mb-3">
+                                                        <input class="form-control" name="inputDOB" type="date" placeholder="Date of Birth" required/>
+                                                        <label for="inputDOB">Date of Birth</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-floating mb-3">
+                                                        <select name="inputGender" id="inputGender" class="form-control form-select" title="Gender" required>
+                                                            <option selected>Select Gender</option>
+                                                            <option>Male</option>
+                                                            <option>Female</option>
+                                                        </select>
+                                                        <label for="inputGender">Gender</label>
+                                                    </div>
+                                                </div>
+                                            </div>
                                             <div class="form-floating mb-3">
                                                 <input class="form-control" name="inputEmail" type="email" placeholder="name@example.com" required/>
                                                 <label for="inputEmail">Email address</label>
@@ -70,31 +83,44 @@
                                             </div>
                                             <div class="form-floating mb-3">
                                                 <input class="form-control" name="inputPassword" type="password" placeholder="Create a password" required/>
-                                                    <label for="inputPassword">Password</label>
+                                                <label for="inputPassword">Password</label>
                                             </div>
                                             <div class="form-floating mb-3">
                                                 <input class="form-control" name="address" type="text" placeholder="Address" required/>
-                                                    <label for="address">Address</label>
+                                                <label for="address">Address</label>
                                             </div>
-                                            <div class="form-group pmd-textfield pmd-textfield-floating-label ">
-                                                <label for="is_admin">Admin</label>
-                                                <select name="is_admin" id="is_admin" class="form-control" title="Admin" required>
-                                                    <option></option>
-                                                    <option>Yes</option>
-                                                    <option>No</option>
-                                                </select><span class="pmd-textfield-focused"></span>
+                                            <div class="col-md-6">
+                                                <div class="form-floating mb-3">
+                                                    <select name="is_admin" id="is_admin" class="form-control form-select" title="Admin" required>
+                                                        <option>Yes</option>
+                                                        <option>No</option>
+                                                    </select>
+                                                    <label for="is_admin">Admin</label>
+                                                </div>
                                             </div>
-                                            <div class="form-group pmd-textfield pmd-textfield-floating-label ">
-                                                <label for="dep">Choose your department</label>
-                                                <!-- update dp's name in the db -->
-                                                <select name="dep" id="dep" class="form-control" title="Department" required>
-                                                    <option></option>
-                                                    <option>Production</option>
-                                                    <option>IT</option>
-                                                    <option>Management</option>
-                                                    <option>Marketing</option>
-                                                    <option>Sales</option>
-                                                </select><span class="pmd-textfield-focused"></span>
+                                            <div class="col-md-6">
+                                                <div class="form-floating mb-3">
+                                                    <select name="dep" id="dep" class="form-control form-select" title="Department" required>
+                                                        <option>Production</option>
+                                                        <option>IT</option>
+                                                        <option>Management</option>
+                                                        <option>Marketing</option>
+                                                        <option>Sales</option>
+                                                        <option>Intern Software Developer</option>
+                                                        <option>DevOps</option>
+                                                        <option>Technical Lead</option>
+                                                        <option>Research and development</option>
+                                                        <option>Quality Assurance Engineer</option>
+                                                        <option>Production</option>
+                                                        <option>Front-end Developer</option>
+                                                        <option>Project Manager</option>
+                                                        <option>Software Architect</option>
+                                                        <option>Accounts and finance</option>
+                                                        <option>Ux/ui Designer</option>
+                                                        <option>Product Manager</option>
+                                                    </select>
+                                                    <label for="dep">Choose your department</label>     
+                                                </div>
                                             </div>
                                             <div class="mt-4 mb-0">
                                                 <div class="d-grid"><input name="create_account" type="submit" value="Create Account" class="btn btn-primary btn-block" ></div>

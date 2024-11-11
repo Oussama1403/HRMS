@@ -5,6 +5,8 @@ class User(UserMixin,db.Model):
     employee_id = db.Column(db.Integer,primary_key=True)
     first_name = db.Column(db.String(20))
     last_name = db.Column(db.String(20))
+    gender = db.Column(db.String(20))
+    date_of_birth = db.Column(db.Date)  # New date of birth field
     email = db.Column(db.String(100), unique=True)
     password = db.Column(db.String(100))
     dep_name = db.Column(db.Integer,db.ForeignKey('departements.name')) #foreign key
@@ -13,10 +15,12 @@ class User(UserMixin,db.Model):
     salaire = db.Column(db.Integer)
     is_admin = db.Column(db.Boolean)
 
-    def __init__(self,employee_id,first_name,last_name,email,password,dep_name,address,phone,salaire,is_admin):
+    def __init__(self,employee_id,first_name,last_name,gender,date_of_birth,email,password,dep_name,address,phone,salaire,is_admin):
         self.employee_id = employee_id
         self.first_name = first_name
         self.last_name = last_name
+        self.gender = gender
+        self.date_of_birth = date_of_birth  
         self.email = email
         self.password = password
         self.dep_name = dep_name

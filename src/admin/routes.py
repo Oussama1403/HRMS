@@ -4,6 +4,7 @@ from src.app import db
 from src.models import *
 from .modules import *
 from . import admin
+from datetime import datetime
 
 @admin.route("/manage_leave",methods=['POST','GET'])
 @login_required
@@ -78,9 +79,9 @@ def list_employees():
         list_users.append({"employee_id":user.employee_id,"firstname":user.first_name,"lastname":user.last_name,"dep":user.dep_name,"salary":user.salaire})
     return render_template('admin/list_employees.html',list_users = list_users,fullname = fullname,role=role)
 
-@admin.route("/edit_employee/<matricule>",methods=['POST','GET'])
+@admin.route("/edit_employee/<employee_id>",methods=['POST','GET'])
 @login_required
-def edit_employee(matricule):
+def edit_employee(employee_id):
     result = AdminOnly()
     if result == False:
         return redirect(url_for('home.home'))    
@@ -92,16 +93,21 @@ def edit_employee(matricule):
             first_name = request.form["firstname"]
             last_name = request.form["lastname"]
             email = request.form["email"]
+            gender = request.form["gender"]
+            date_of_birth_str = request.form["date_of_birth"]
+            date_of_birth = datetime.strptime(date_of_birth_str, '%Y-%m-%d').date()  # convert to python date object
             address = request.form["address"]
             dep = request.form["dep"]
             phone = request.form["phone"]
             salary = request.form["salary"]
             
             # To update data, modify attributes on the model objects:
-            user = User.query.filter_by(matricule=matricule).first()
+            user = User.query.filter_by(employee_id=employee_id).first()
             user.first_name = first_name
             user.last_name = last_name
             user.email = email
+            user.gender = gender
+            user.date_of_birth = date_of_birth
             user.address = address
             user.dep_name = dep
             user.phone = phone
@@ -109,27 +115,29 @@ def edit_employee(matricule):
             db.session.commit()
             
             flash("Account details have been saved successfully")            
-            return redirect(url_for('admin.edit_employee',matricule=matricule))
+            return redirect(url_for('admin.edit_employee',employee_id=employee_id))
         if request.form['submit_b'] == "Delete":
             
-            user = User.query.filter_by(matricule=matricule).first()
+            user = User.query.filter_by(employee_id=employee_id).first()
             db.session.delete(user)
             db.session.commit()
             flash("User account successfully deleted")
             return redirect(url_for('admin.list_employees'))            
     else:
-        # request user by matricule and get fullname,email,phone,dep,adress
+        # request user by employee_id and get fullname,email,phone,dep,adress
         # send to profile page
-        user = User.query.filter_by(matricule = matricule).first()
-        matricule = user.matricule
+        user = User.query.filter_by(employee_id=employee_id).first()
+        employee_id = user.employee_id
         firstname = user.first_name 
         lastname = user.last_name
+        gender = user.gender
+        date_of_birth = user.date_of_birth 
         email = user.email
         phone = user.phone 
         dep = user.dep_name
         address = user.address
         salary = user.salaire
-        return render_template('admin/edit.html',matricule=matricule,fullname = firstname + " " + lastname,firstname=firstname,lastname=lastname,email=email,phone=phone,address=address,dep = dep,salary=salary)
+        return render_template('admin/edit.html',employee_id=employee_id,fullname = firstname + " " + lastname,firstname=firstname,lastname=lastname,gender=gender,date_of_birth=date_of_birth,email=email,phone=phone,address=address,dep = dep,salary=salary)
 
 @admin.route("/list_dep")
 @login_required
