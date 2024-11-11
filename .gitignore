@@ -1,3 +1,5 @@
 venv/
 # ignore __pycache__ dir
 __pycache__
+# ignore db
+instance/db.sqlite3
